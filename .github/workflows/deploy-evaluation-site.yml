@@ -2,7 +2,7 @@ name: Deploy Evaluation Site
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - "prototype/reports/evaluation_site/**"
       - ".github/workflows/deploy-evaluation-site.yml"
