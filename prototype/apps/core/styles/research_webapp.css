@@ -1,0 +1,94 @@
+:root {
+    --app-accent: #2563eb;
+    --app-accent-dark: #1d4ed8;
+    --app-accent-soft: #eff6ff;
+}
+
+[data-testid="stTextArea"] textarea {
+    min-height: 10rem;
+}
+
+.model-profile-summary {
+    margin: 0.35rem 0 1rem;
+    padding: 0.75rem 0.8rem;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 0.5rem;
+    background: rgba(148, 163, 184, 0.08);
+    color: inherit;
+}
+
+.model-profile-summary-title {
+    margin-bottom: 0.45rem;
+    color: color-mix(in srgb, currentColor 68%, transparent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.model-profile-summary-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.18rem 0;
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.model-profile-summary-row span {
+    flex: 0 0 auto;
+    color: color-mix(in srgb, currentColor 62%, transparent);
+}
+
+.model-profile-summary-row strong {
+    min-width: 0;
+    text-align: right;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+}
+
+.answer-draft-notice {
+    margin: 0.75rem 0 0.65rem;
+    padding: 0.7rem 0.85rem;
+    border: 1px solid color-mix(in srgb, var(--app-accent) 34%, transparent);
+    border-left: 4px solid var(--app-accent);
+    border-radius: 0.5rem;
+    background: color-mix(in srgb, var(--app-accent) 10%, transparent);
+    color: inherit;
+    line-height: 1.45;
+}
+
+.answer-draft-preview {
+    display: block;
+    margin: 0;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 0.5rem;
+    background: rgba(148, 163, 184, 0.07);
+    color: inherit;
+    font: inherit;
+    line-height: 1.6;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.answer-draft-preview p {
+    margin: 0 0 0.85rem;
+}
+
+.answer-draft-preview p:last-child,
+.answer-draft-preview ul:last-child,
+.answer-draft-preview ol:last-child {
+    margin-bottom: 0;
+}
+
+.answer-draft-preview ul,
+.answer-draft-preview ol {
+    margin: 0 0 0.9rem 1.2rem;
+    padding: 0;
+}
+
+.answer-draft-preview li {
+    margin: 0.2rem 0;
+    padding-left: 0.15rem;
+}

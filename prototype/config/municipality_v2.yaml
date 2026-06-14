@@ -1,0 +1,2001 @@
+# Diese Datei beschreibt die erweiterte Organisationskonfiguration für die
+# aktuelle v5-Pipeline. Sie modelliert die Beispielkommune hierarchisch und hält
+# kommunale Zuständigkeiten, Weiterleitungsziele, Antwortrollen und fachliche
+# Suchsignale außerhalb des Python-Codes.
+#
+# Funktionsweise:
+# - `answer_templates` enthält zentrale Textbausteine, die von der Antwortlogik
+#   zusätzlich zu fachbereichsspezifischen Rollen verwendet werden können.
+# - `schema_version` kennzeichnet das erwartete Organisationsschema und erleichtert
+#   den späteren Abgleich mit Parsern, Tests oder Evaluationsexporten.
+# - `municipality` beschreibt die fiktive Kommune als Kontext für Antwortentwürfe
+#   und Demonstrationsausgaben.
+# - `department_groups` bildet die Verwaltungsstruktur ab: Dezernate enthalten
+#   Fachbereiche, Fachbereiche enthalten Bereiche, Bereiche enthalten Teams.
+# - `unit_type` macht jede Ebene maschinenlesbar und hilft der Pipeline, Einheiten
+#   eindeutig als Dezernat, Fachbereich, Bereich oder Team zu interpretieren.
+# - `public_label`, `internal_label` und `email` trennen sichtbare Bezeichnungen
+#   von internen Namen und simulierten Weiterleitungszielen.
+# - `knowledge_category` verbindet Organisationseinheiten mit passenden Inhalten
+#   der Wissensbasis. Dadurch kann Retrieval fachlich passend eingeschränkt oder
+#   ausgewertet werden.
+# - `description`, `keywords` und `services` liefern Klassifikationssignale für
+#   Routing, Top-3-Vorschläge und Evaluation.
+# - `answer_role` definiert die fachliche Perspektive, Tonalität und Grenzen der
+#   Antwortgenerierung. Die Antwort bleibt dadurch ein quellengebundener Entwurf
+#   aus Sicht der zuständigen Organisationseinheit.
+# - Zuständigkeiten, Rollen und Weiterleitungsadressen sollen in dieser Datei
+#   gepflegt werden, damit v5 fachlich anpassbar bleibt, ohne Routingregeln im
+#   Code zu verstecken.
+answer_templates:
+  official_closing_notice: >-
+    Hinweis: Beachten Sie, dass Ihre E-Mail in vielen Fällen nicht die formelle
+    Beantragung ersetzt. Für die formelle Beantragung nutzen Sie bitte den
+    vorgesehenen Online- bzw. Terminservice unter
+    https://serviceportal.musterstadt.example/terminservice. Falls eine persönliche
+    Vorsprache erforderlich ist, erfolgt die Terminvereinbarung über den zuständigen
+    Fachbereich bzw. die dort bereitgestellten Terminangebote.
+
+schema_version: municipality_v5_organization
+municipality:
+  name: Musterstadt
+  type: mittelgroße kreisangehörige Stadt
+  description: Fiktive Beispielkommune für den KI-Posteingangsprototyp mit fachlich geschärfter Organisationsstruktur für
+    V5-Experimente.
+department_groups:
+  department_group_0:
+    name: Dezernat 0 - Verwaltungsleitung und zentrale Dienste
+    unit_type: department_group
+    description: Querschnittsdezernat für Verwaltungsleitung, zentrale Steuerung und allgemeine Verwaltungskoordination.
+    departments:
+      central_administration:
+        name: Fachbereich Zentrale Verwaltung
+        unit_type: department
+        public_label: Zentrale Verwaltung
+        internal_label: Fachbereich Zentrale Verwaltung
+        email: zentrale_verwaltung@kommune.test
+        description: Bündelt zentrale Verwaltungsaufgaben, Rats- und Gremienangelegenheiten, Organisation, Recht, Kommunikation
+          und Digitalisierung als kommunalen Querschnittsbereich.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereichs Zentrale Verwaltung. Bündle zentrale Verwaltungsaufgaben, Rats-
+          und Gremienangelegenheiten, Organisation, Recht, Kommunikation und Digitalisierung als kommunalen Querschnittsbereich.
+          Formuliere als zuständige Stelle der Stadt Musterstadt, bürgernah, präzise und quellengebunden. Fordere nur Angaben
+          an, die für die weitere Bearbeitung wirklich erforderlich sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen
+          verweist du auf den vorgesehenen Online-, Termin- oder Vorspracheweg.
+        services:
+        - Allgemeine Anfrage an die Stadtverwaltung einordnen
+        - Rats- oder Gremienangelegenheit vorprüfen
+        - Datenschutz- oder Organisationsanfrage einordnen
+        keywords:
+        - stadtverwaltung
+        - verwaltungsleitung
+        - rat
+        - gremium
+        - datenschutz
+        - digitalisierung
+        divisions:
+          executive_office:
+            name: Büro der Verwaltungsleitung und Ratsangelegenheiten
+            unit_type: division
+            knowledge_category: zentrale_verwaltung
+            email: verwaltungsleitung@kommune.test
+            description: Koordiniert allgemeine Verwaltungsleitung, Rats- und Gremienanliegen sowie fachbereichsübergreifende
+              Vorgänge.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Büro der Verwaltungsleitung und Ratsangelegenheiten. Koordiniert
+              allgemeine Verwaltungsleitung, Rats- und Gremienanliegen sowie fachbereichsübergreifende Vorgänge. Bleibe bei
+              dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              council_affairs:
+                name: Rats- und Gremienangelegenheiten
+                description: Zuständig für Anfragen zu Ratssitzungen, Ausschüssen, Tagesordnungen und öffentlich bereitgestellten
+                  Unterlagen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Rats- und Gremienangelegenheiten im Bereich Büro der Verwaltungsleitung
+                  und Ratsangelegenheiten. Zuständig für Anfragen zu Ratssitzungen, Ausschüssen, Tagesordnungen und öffentlich
+                  bereitgestellten Unterlagen. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie
+                  „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen
+                  verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - ratssitzung
+                - ausschuss
+                - tagesordnung
+                - ratsunterlagen
+                - gremium
+                services:
+                - Ratssitzung oder Ausschussanfrage einordnen
+                - Hinweis zu öffentlichen Sitzungsunterlagen geben
+                unit_type: team
+              executive_coordination:
+                name: Verwaltungsleitung und Koordination
+                description: Zuständig für allgemeine Anliegen an die Verwaltungsleitung und fachbereichsübergreifende Erstkoordination.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Verwaltungsleitung und Koordination im Bereich Büro der Verwaltungsleitung
+                  und Ratsangelegenheiten. Zuständig für allgemeine Anliegen an die Verwaltungsleitung und fachbereichsübergreifende
+                  Erstkoordination. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“,
+                  „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist
+                  du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - bürgermeister
+                - verwaltungsleitung
+                - beschwerde an die stadt
+                - allgemeine verwaltungsanfrage
+                services:
+                - Allgemeine Anfrage an die Verwaltungsleitung einordnen
+                - Fachbereichsübergreifendes Anliegen vorprüfen
+                unit_type: team
+          organization_law_digital_services:
+            name: Organisation, Recht und Digitalisierung
+            unit_type: division
+            knowledge_category: zentrale_verwaltung
+            email: organisation_digitalisierung@kommune.test
+            description: Bearbeitet allgemeine Organisations-, Rechts-, Datenschutz- und Digitalisierungsanliegen ohne speziellere
+              Fachzuständigkeit.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Organisation, Recht und Digitalisierung. Bearbeitet allgemeine
+              Organisations-, Rechts-, Datenschutz- und Digitalisierungsanliegen ohne speziellere Fachzuständigkeit. Bleibe
+              bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              data_protection:
+                name: Datenschutz und Auskunft
+                description: Zuständig für Datenschutzanfragen, Auskunftsersuchen und Hinweise zum Umgang mit personenbezogenen
+                  Daten.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Datenschutz und Auskunft im Bereich Organisation, Recht und
+                  Digitalisierung. Zuständig für Datenschutzanfragen, Auskunftsersuchen und Hinweise zum Umgang mit personenbezogenen
+                  Daten. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“
+                  oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - datenschutz
+                - dsgvo
+                - auskunft
+                - personenbezogene daten
+                - löschung
+                services:
+                - Datenschutzanfrage einordnen
+                - Auskunftsersuchen nach Datenschutzrecht vorprüfen
+                unit_type: team
+              digital_service_desk:
+                name: Digitale Dienste und Serviceportal
+                description: Zuständig für Hinweise zu städtischen Online-Diensten, Formularen, Serviceportal und technischen
+                  Zugangsproblemen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Digitale Dienste und Serviceportal im Bereich Organisation,
+                  Recht und Digitalisierung. Zuständig für Hinweise zu städtischen Online-Diensten, Formularen, Serviceportal
+                  und technischen Zugangsproblemen. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen
+                  wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen
+                  Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - online-dienst
+                - serviceportal
+                - formular
+                - terminservice
+                - login
+                - technische störung
+                services:
+                - Störung eines Online-Dienstes aufnehmen
+                - Hinweis zum Serviceportal geben
+                unit_type: team
+              legal_organization:
+                name: Organisation und Rechtskoordination
+                description: Zuständig für allgemeine Organisations- und Rechtsfragen ohne speziellere Fachzuständigkeit.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Organisation und Rechtskoordination im Bereich Organisation,
+                  Recht und Digitalisierung. Zuständig für allgemeine Organisations- und Rechtsfragen ohne speziellere Fachzuständigkeit.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - organisation
+                - satzung
+                - recht
+                - zuständigkeit
+                - verwaltungsverfahren
+                services:
+                - Allgemeine Organisations- oder Rechtsfrage vorprüfen
+                unit_type: team
+  department_group_1:
+    name: Dezernat I - Finanzen und zentrale Steuerung
+    unit_type: department_group
+    description: Dezernat für Finanzen, kommunale Abgaben und Haushaltsbezug.
+    departments:
+      finance:
+        name: Fachbereich Finanzen
+        unit_type: department
+        public_label: Fachbereich Finanzen
+        internal_label: Fachbereich Finanzen
+        email: finanzen@kommune.test
+        description: Zuständig für kommunale Steuern, Grundsteuer, Hundesteuer, Gebührenbescheide, Mahnungen, Zahlungen, SEPA-Lastschriftmandate,
+          Stundung, Ratenzahlung, Gewerbesteuer, Vergnügungssteuer, Erstattungen, Auszahlungen und Rechnungen an die Kommune.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Finanzen. Zuständig für kommunale Steuern, Grundsteuer, Hundesteuer,
+          Gebührenbescheide, Mahnungen, Zahlungen, SEPA-Lastschriftmandate, Stundung, Ratenzahlung, Gewerbesteuer, Vergnügungssteuer,
+          Erstattungen, Auszahlungen und Rechnungen an die Kommune. Formuliere als zuständige Stelle der Stadt Musterstadt,
+          bürgernah, präzise und quellengebunden. Fordere nur Angaben an, die für die weitere Bearbeitung wirklich erforderlich
+          sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen verweist du auf den vorgesehenen Online-, Termin- oder
+          Vorspracheweg.
+        services:
+        - Kommunale Abgabe oder Steuer einordnen
+        - Zahlung oder Mahnung klären
+        - Erstattung oder Rechnung zuordnen
+        keywords:
+        - finanzen
+        - steuer
+        - abgabe
+        - gebühr
+        - bescheid
+        - zahlung
+        - mahnung
+        - kassenzeichen
+        divisions:
+          taxes_and_charges:
+            name: Finanzen und Steuern
+            unit_type: division
+            knowledge_category: finanzen_steuern
+            email: finanzen-steuern@kommune.test
+            description: Zuständig für kommunale Steuern, Grundsteuer, Hundesteuer, Gebührenbescheide, Mahnungen, Zahlungen,
+              SEPA-Lastschriftmandate, Stundung, Ratenzahlung, Gewerbesteuer, Vergnügungssteuer, Erstattungen, Auszahlungen
+              und Rechnungen an die Kommune.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Finanzen und Steuern. Zuständig für kommunale Steuern, Grundsteuer,
+              Hundesteuer, Gebührenbescheide, Mahnungen, Zahlungen, SEPA-Lastschriftmandate, Stundung, Ratenzahlung, Gewerbesteuer,
+              Vergnügungssteuer, Erstattungen, Auszahlungen und Rechnungen an die Kommune. Bleibe bei dieser Zuständigkeit
+              und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              payments_notices_reminders:
+                name: Zahlungen, Bescheide und Mahnungen
+                description: Zuständig für Gebührenbescheide, Mahnungen, Kassenzeichen, Zahlungseingänge und Zahlungsnachweise.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Zahlungen, Bescheide und Mahnungen im Bereich Finanzen und Steuern.
+                  Zuständig für Gebührenbescheide, Mahnungen, Kassenzeichen, Zahlungseingänge und Zahlungsnachweise. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - gebührenbescheid
+                - mahnung
+                - kassenzeichen
+                - zahlung
+                - zahlungseingang
+                - zahlungsnachweis
+                services:
+                - Gebührenbescheid oder Mahnung klären
+                unit_type: team
+              payment_methods_deferral:
+                name: Zahlungswege und Stundung
+                description: Zuständig für SEPA-Lastschriftmandate, Stundung, Ratenzahlung und Vollstreckungsvorbereitung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Zahlungswege und Stundung im Bereich Finanzen und Steuern. Zuständig
+                  für SEPA-Lastschriftmandate, Stundung, Ratenzahlung und Vollstreckungsvorbereitung. Sprich natürlich als
+                  zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage
+                  keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - sepa
+                - lastschriftmandat
+                - stundung
+                - ratenzahlung
+                - vollstreckung
+                services:
+                - SEPA-Lastschriftmandat einrichten
+                - Stundung oder Ratenzahlung beantragen
+                unit_type: team
+              invoices_refunds:
+                name: Rechnungen, Erstattungen und Auszahlungen
+                description: Zuständig für Rechnungen an die Kommune, Erstattungen, Auszahlungen, IBAN und Verwendungszweck.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Rechnungen, Erstattungen und Auszahlungen im Bereich Finanzen
+                  und Steuern. Zuständig für Rechnungen an die Kommune, Erstattungen, Auszahlungen, IBAN und Verwendungszweck.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - erstattung
+                - auszahlung
+                - iban
+                - rechnung an die kommune
+                - verwendungszweck
+                services:
+                - Spenden, Erstattungen und Auszahlungen klären
+                - Rechnung an die Kommune einordnen
+                unit_type: team
+              property_tax:
+                name: Grundsteuer
+                description: Zuständig für Grundsteuerbescheide, Kassenzeichen, Messbeträge und Rückfragen zur grundsteuerlichen
+                  Veranlagung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Grundsteuer im Bereich Finanzen und Steuern. Zuständig für Grundsteuerbescheide,
+                  Kassenzeichen, Messbeträge und Rückfragen zur grundsteuerlichen Veranlagung. Sprich natürlich als zuständige
+                  Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - grundsteuer
+                - grundsteuerbescheid
+                - messbetrag
+                - grundstück
+                services:
+                - Grundsteuerbescheid klären
+                unit_type: team
+              dog_tax:
+                name: Hundesteuer
+                description: Zuständig für Anmeldung, Abmeldung und Änderung von Hundesteuerfällen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Hundesteuer im Bereich Finanzen und Steuern. Zuständig für Anmeldung,
+                  Abmeldung und Änderung von Hundesteuerfällen. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen
+                  wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen
+                  Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - hundesteuer
+                - hund anmelden
+                - hund abmelden
+                - hundemarke
+                services:
+                - Hundesteuer anmelden
+                - Hundesteuer abmelden oder korrigieren
+                unit_type: team
+              business_tax:
+                name: Gewerbe- und Aufwandsteuern
+                description: Zuständig für Gewerbesteuer, Vergnügungssteuer und weitere örtliche Aufwandsteuern.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Gewerbe- und Aufwandsteuern im Bereich Finanzen und Steuern.
+                  Zuständig für Gewerbesteuer, Vergnügungssteuer und weitere örtliche Aufwandsteuern. Sprich natürlich als
+                  zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage
+                  keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - gewerbesteuer
+                - vorauszahlung
+                - vergnügungssteuer
+                - aufwandsteuer
+                services:
+                - Gewerbesteuer-Grundanliegen einordnen
+                - Vergnügungssteuer oder Aufwandsteuer klären
+                unit_type: team
+  department_group_2:
+    name: Dezernat II - Bürgerdienste, Ordnung und Wirtschaft
+    unit_type: department_group
+    description: Dezernat für publikumsnahe Bürgerdienste, Ordnungsangelegenheiten sowie Gewerbe und Wirtschaft. Ordnungsamt
+      und Gewerbe/Wirtschaft sind getrennte Fachbereiche.
+    departments:
+      citizen_services:
+        name: Fachbereich Bürgerdienste
+        unit_type: department
+        public_label: Fachbereich Bürgerdienste
+        internal_label: Fachbereich Bürgerdienste
+        email: buergerdienste@kommune.test
+        description: Bündelt bürgernahe Dienstleistungen mit häufigem Publikumsverkehr, insbesondere Bürgerbüro, Meldewesen,
+          Ausweis- und Passangelegenheiten sowie Personenstandswesen.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Bürgerdienste. Bündelt bürgernahe Dienstleistungen mit häufigem
+          Publikumsverkehr, insbesondere Bürgerbüro, Meldewesen, Ausweis- und Passangelegenheiten sowie Personenstandswesen.
+          Formuliere als zuständige Stelle der Stadt Musterstadt, bürgernah, präzise und quellengebunden. Fordere nur Angaben
+          an, die für die weitere Bearbeitung wirklich erforderlich sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen
+          verweist du auf den vorgesehenen Online-, Termin- oder Vorspracheweg.
+        services:
+        - Ausweisdokument vorbereiten
+        - Wohnsitz anmelden oder ummelden
+        - Termin im Bürgerbüro vorbereiten
+        keywords:
+        - bürgerbüro
+        - meldewesen
+        - ausweis
+        - reisepass
+        - führungszeugnis
+        - beglaubigung
+        - fundbüro
+        divisions:
+          citizens_office:
+            name: Bürgerbüro
+            unit_type: division
+            knowledge_category: buergerbuero
+            email: buergerbuero@kommune.test
+            description: Zuständig für Meldeangelegenheiten, Ausweisdokumente, Führungszeugnisse, Beglaubigungen, Bewohnerparkausweise,
+              Fundsachen und Termin- oder Vorbereitungsfragen im Bürgerbüro.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Bürgerbüro. Zuständig für Meldeangelegenheiten, Ausweisdokumente,
+              Führungszeugnisse, Beglaubigungen, Bewohnerparkausweise, Fundsachen und Termin- oder Vorbereitungsfragen im
+              Bürgerbüro. Bleibe bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich
+              ab.
+            teams:
+              id_cards_travel_documents:
+                name: Ausweise und Reisedokumente
+                description: Zuständig für Personalausweis, Reisepass, Ausweisverlust und vorbereitende Fragen zu Ausweisdokumenten.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Ausweise und Reisedokumente im Bereich Bürgerbüro. Zuständig
+                  für Personalausweis, Reisepass, Ausweisverlust und vorbereitende Fragen zu Ausweisdokumenten. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - personalausweis
+                - reisepass
+                - kinderreisepass
+                - ausweisverlust
+                - biometrisches passfoto
+                services:
+                - Personalausweis beantragen
+                - Reisepass beantragen
+                - Ausweisverlust klären
+                unit_type: team
+              residence_registration:
+                name: Meldewesen
+                description: Zuständig für Anmeldung, Ummeldung, Abmeldung und Meldebescheinigungen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Meldewesen im Bereich Bürgerbüro. Zuständig für Anmeldung, Ummeldung,
+                  Abmeldung und Meldebescheinigungen. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen
+                  wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen
+                  Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - anmeldung
+                - ummeldung
+                - abmeldung
+                - meldebescheinigung
+                - wohnsitz
+                services:
+                - Wohnsitz anmelden
+                - Wohnsitz ummelden
+                - Meldebescheinigung beantragen
+                unit_type: team
+              certifications:
+                name: Beglaubigungen
+                description: Zuständig für Beglaubigungen von Kopien, Abschriften und Unterschriften im Bürgerbüro.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Beglaubigungen im Bereich Bürgerbüro. Zuständig für Beglaubigungen
+                  von Kopien, Abschriften und Unterschriften im Bürgerbüro. Sprich natürlich als zuständige Stelle, zum Beispiel
+                  mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung
+                  zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - beglaubigung
+                - kopie
+                - abschrift
+                - unterschrift
+                - original
+                services:
+                - Beglaubigung von Kopien beantragen
+                - Unterschriftsbeglaubigung klären
+                unit_type: team
+              lost_and_found:
+                name: Fundsachen
+                description: Zuständig für Fundsachen im Bürgerbüro.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Fundsachen im Bereich Bürgerbüro. Zuständig für Fundsachen im
+                  Bürgerbüro. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir
+                  prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist
+                  du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - fundsachen
+                - fundbüro
+                - geldbeutel
+                services:
+                - Fundsache melden oder abholen
+                unit_type: team
+              appointment_preparation:
+                name: Termin und Vorbereitung
+                description: Zuständig für Terminservice, Vorbereitung von Vorsprachen und Fragen zu mitzubringenden Unterlagen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Termin und Vorbereitung im Bereich Bürgerbüro. Zuständig für
+                  Terminservice, Vorbereitung von Vorsprachen und Fragen zu mitzubringenden Unterlagen. Sprich natürlich als
+                  zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage
+                  keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - termin
+                - terminservice
+                - unterlagen mitbringen
+                - vorsprache
+                services:
+                - Termin im Bürgerbüro vorbereiten
+                unit_type: team
+              conduct_certificates:
+                name: Führungszeugnisse
+                description: Zuständig für einfache, erweiterte und behördliche Führungszeugnisse.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Führungszeugnisse im Bereich Bürgerbüro. Zuständig für einfache,
+                  erweiterte und behördliche Führungszeugnisse. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen
+                  wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen
+                  Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - führungszeugnis
+                - erweitertes führungszeugnis
+                - behördliches führungszeugnis
+                services:
+                - Führungszeugnis beantragen
+                - Erweitertes Führungszeugnis beantragen
+                unit_type: team
+              resident_parking_permits:
+                name: Bewohnerparkausweise
+                description: Zuständig für Bewohnerparkausweise, Kennzeichenänderungen und Nachweise zum Bewohnerparken.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Bewohnerparkausweise im Bereich Bürgerbüro. Zuständig für Bewohnerparkausweise,
+                  Kennzeichenänderungen und Nachweise zum Bewohnerparken. Sprich natürlich als zuständige Stelle, zum Beispiel
+                  mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung
+                  zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - bewohnerparkausweis
+                - parkausweis
+                - kennzeichen
+                - bewohnerparken
+                services:
+                - Bewohnerparkausweis beantragen
+                - Kennzeichen zum Bewohnerparkausweis ändern
+                unit_type: team
+      registry_office:
+        name: Standesamt
+        unit_type: department
+        knowledge_category: standesamt
+        email: standesamt@kommune.test
+        description: Zuständig für Personenstandsfälle, Eheschließungen, Geburts-, Ehe- und Sterbeurkunden, Namensänderungen,
+          Namenserklärungen, Kirchenaustritte, Vaterschaftsanerkennungen, Sorgeerklärungen, Registerauskünfte sowie standesamtliche
+          Vorgänge mit Auslandsbezug.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Standesamt. Zuständig für Personenstandsfälle, Eheschließungen, Geburts-,
+          Ehe- und Sterbeurkunden, Namensänderungen, Namenserklärungen, Kirchenaustritte, Vaterschaftsanerkennungen, Sorgeerklärungen,
+          Registerauskünfte sowie standesamtliche Vorgänge mit Auslandsbezug. Formuliere als zuständige Stelle der Stadt Musterstadt,
+          bürgernah, präzise und quellengebunden. Fordere nur Angaben an, die für die weitere Bearbeitung wirklich erforderlich
+          sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen verweist du auf den vorgesehenen Online-, Termin- oder
+          Vorspracheweg.
+        divisions:
+          civil_register_certificates:
+            name: Personenstandsregister und Urkundenstelle
+            unit_type: division
+            knowledge_category: standesamt
+            email: urkunden.standesamt@kommune.test
+            description: Zuständig für Urkunden aus dem Personenstandsregister, Registerauskünfte, mehrsprachige Urkunden
+              sowie Nachweise zu Geburt, Ehe und Sterbefall.
+            teams:
+              registry_certificates:
+                name: Urkunden und Registerauskünfte
+                unit_type: team
+                description: Zuständig für Geburtsurkunden, Eheurkunden, Sterbeurkunden, Registerauskünfte und mehrsprachige
+                  Urkunden.
+                keywords:
+                - geburtsurkunde
+                - eheurkunde
+                - sterbeurkunde
+                - personenstandsregister
+                - registerauskunft
+                - mehrsprachige urkunde
+                - urkundenstelle
+                services:
+                - Geburtsurkunde beantragen
+                - Eheurkunde beantragen
+                - Sterbeurkunde beantragen
+                - Registerauskunft beantragen
+                - Mehrsprachige Urkunde beantragen
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Urkunden und Registerauskünfte im Bereich Personenstandsregister
+                  und Urkundenstelle. Zuständig für Geburtsurkunden, Eheurkunden, Sterbeurkunden, Registerauskünfte und mehrsprachige
+                  Urkunden. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“
+                  oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Personenstandsregister und Urkundenstelle. Zuständig für Urkunden
+              aus dem Personenstandsregister, Registerauskünfte, mehrsprachige Urkunden sowie Nachweise zu Geburt, Ehe und
+              Sterbefall. Bleibe bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich
+              ab.
+          civil_status_events:
+            name: Personenstandsfälle und Eheschließungen
+            unit_type: division
+            knowledge_category: standesamt
+            email: personenstand.standesamt@kommune.test
+            description: Zuständig für die Beurkundung von Geburten, Eheschließungen und Sterbefällen sowie für Nachbeurkundungen
+              und standesamtliche Vorgänge mit Auslandsbezug.
+            teams:
+              civil_status_cases:
+                name: Personenstandsfälle
+                unit_type: team
+                description: Zuständig für Geburt, Eheschließung, Sterbefall, Nachbeurkundung und Urkunden oder Vorgänge mit
+                  Auslandsbezug.
+                keywords:
+                - geburt
+                - geburtsbeurkundung
+                - heirat
+                - eheschließung
+                - ehe anmelden
+                - sterbefall
+                - nachbeurkundung
+                - auslandsbezug
+                - internationale urkunde
+                services:
+                - Geburt beurkunden
+                - Eheschließung anmelden
+                - Sterbefall beurkunden
+                - Urkunde mit Auslandsbezug beantragen
+                - Nachbeurkundung einer Auslandsgeburt klären
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Personenstandsfälle im Bereich Personenstandsfälle und Eheschließungen.
+                  Zuständig für Geburt, Eheschließung, Sterbefall, Nachbeurkundung und Urkunden oder Vorgänge mit Auslandsbezug.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Personenstandsfälle und Eheschließungen. Zuständig für die Beurkundung
+              von Geburten, Eheschließungen und Sterbefällen sowie für Nachbeurkundungen und standesamtliche Vorgänge mit
+              Auslandsbezug. Bleibe bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich
+              ab.
+          names_and_religion:
+            name: Namensrecht und Kirchenaustritt
+            unit_type: division
+            knowledge_category: standesamt
+            email: namensrecht.standesamt@kommune.test
+            description: Zuständig für Namenserklärungen, Namensänderungen im standesamtlichen Kontext sowie Kirchenaustrittserklärungen.
+            teams:
+              names_church_resignation:
+                name: Namen und Kirchenaustritt
+                unit_type: team
+                description: Zuständig für Namensänderungen, Namenserklärungen und Kirchenaustritte.
+                keywords:
+                - namensänderung
+                - namenserklärung
+                - namensführung
+                - familienname
+                - geburtsname
+                - kirchenaustritt
+                - austritt aus der kirche
+                services:
+                - Namensänderung oder Namenserklärung klären
+                - Kirchenaustritt erklären
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Namen und Kirchenaustritt im Bereich Namensrecht und Kirchenaustritt.
+                  Zuständig für Namensänderungen, Namenserklärungen und Kirchenaustritte. Sprich natürlich als zuständige
+                  Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Namensrecht und Kirchenaustritt. Zuständig für Namenserklärungen,
+              Namensänderungen im standesamtlichen Kontext sowie Kirchenaustrittserklärungen. Bleibe bei dieser Zuständigkeit
+              und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+          parentage_declarations:
+            name: Familienrechtliche Erklärungen
+            unit_type: division
+            knowledge_category: standesamt
+            email: familienrecht.standesamt@kommune.test
+            description: Zuständig für Vaterschaftsanerkennungen, Sorgeerklärungen und damit verbundene familienrechtliche
+              Erklärungen im standesamtlichen Kontext.
+            teams:
+              family_law_declarations:
+                name: Vaterschaftsanerkennung und Sorgeerklärung
+                unit_type: team
+                description: Zuständig für Vaterschaftsanerkennungen, Sorgeerklärungen und vorbereitende Hinweise zu erforderlichen
+                  Unterlagen und Terminen.
+                keywords:
+                - vaterschaftsanerkennung
+                - vaterschaft anerkennen
+                - sorgeerklärung
+                - gemeinsames sorgerecht
+                - elternschaft
+                - geburt des kindes
+                services:
+                - Vaterschaftsanerkennung vorbereiten
+                - Sorgeerklärung einordnen
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Vaterschaftsanerkennung und Sorgeerklärung im Bereich Familienrechtliche
+                  Erklärungen. Zuständig für Vaterschaftsanerkennungen, Sorgeerklärungen und vorbereitende Hinweise zu erforderlichen
+                  Unterlagen und Terminen. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei
+                  uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen
+                  verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Familienrechtliche Erklärungen. Zuständig für Vaterschaftsanerkennungen,
+              Sorgeerklärungen und damit verbundene familienrechtliche Erklärungen im standesamtlichen Kontext. Bleibe bei
+              dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+        public_label: Standesamt
+        internal_label: Standesamt
+        keywords:
+        - standesamt
+        - personenstand
+        - urkunde
+        - eheschließung
+        - geburt
+        - sterbefall
+        - kirchenaustritt
+        services:
+        - Personenstandsurkunde beantragen
+        - Eheschließung anmelden
+        - Standesamtliche Erklärung vorbereiten
+      public_order:
+        name: Ordnungsamt
+        unit_type: department
+        public_label: Ordnungsamt
+        internal_label: Ordnungsamt
+        email: ordnungsamt@kommune.test
+        description: Zuständig für öffentliche Sicherheit und Ordnung, kommunale Gefahrenabwehr, Verkehrsüberwachung, Ordnungswidrigkeiten,
+          Lärm- und Ordnungsmeldungen, Hundehaltung, Sondernutzungen und Veranstaltungen im öffentlichen Raum.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Ordnungsamt. Zuständig für öffentliche Sicherheit und Ordnung, kommunale Gefahrenabwehr,
+          Verkehrsüberwachung, Ordnungswidrigkeiten, Lärm- und Ordnungsmeldungen, Hundehaltung, Sondernutzungen und Veranstaltungen
+          im öffentlichen Raum. Formuliere als zuständige Stelle der Stadt Musterstadt, bürgernah, präzise und quellengebunden.
+          Fordere nur Angaben an, die für die weitere Bearbeitung wirklich erforderlich sind. Bei Anträgen, Erklärungen oder
+          verbindlichen Vorgängen verweist du auf den vorgesehenen Online-, Termin- oder Vorspracheweg.
+        services:
+        - Ordnungsrechtliche Meldung einordnen
+        - Bußgeld- oder Verkehrsangelegenheit zuordnen
+        - Sondernutzung oder Veranstaltung vorprüfen
+        keywords:
+        - ordnungsamt
+        - ordnungswidrigkeit
+        - gefahrenabwehr
+        - ruhestörung
+        - falschparker
+        - bußgeld
+        - sondernutzung
+        divisions:
+          traffic_enforcement_fines:
+            name: Verkehrsüberwachung und Bußgeldstelle
+            unit_type: division
+            knowledge_category: verkehrsueberwachung_bussgeld
+            email: verkehr-bussgeld@kommune.test
+            description: Zuständig für ruhenden Verkehr, Parkverstöße, Verkehrsordnungswidrigkeiten, Bußgeldbescheide und
+              Einsprüche.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Verkehrsüberwachung und Bußgeldstelle. Zuständig für ruhenden
+              Verkehr, Parkverstöße, Verkehrsordnungswidrigkeiten, Bußgeldbescheide und Einsprüche. Bleibe bei dieser Zuständigkeit
+              und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              parking_enforcement:
+                name: Ruhender Verkehr
+                description: Zuständig für Falschparker, Parkverstöße und Meldungen zur Verkehrsbehinderung durch parkende
+                  Fahrzeuge.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Ruhender Verkehr im Bereich Verkehrsüberwachung und Bußgeldstelle.
+                  Zuständig für Falschparker, Parkverstöße und Meldungen zur Verkehrsbehinderung durch parkende Fahrzeuge.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - falschparker
+                - parken
+                - gehweg blockiert
+                - einfahrt
+                - zugeparkt
+                - parkendes auto
+                - fahrzeug blockiert
+                services:
+                - Falschparker melden
+                - Blockierte Einfahrt oder Gehweg durch parkendes Fahrzeug melden
+                unit_type: team
+              fine_proceedings:
+                name: Bußgeldstelle
+                description: Zuständig für Bußgeldbescheide, Anhörungen, Einsprüche und Zahlungsfragen zu Ordnungswidrigkeiten.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Bußgeldstelle im Bereich Verkehrsüberwachung und Bußgeldstelle.
+                  Zuständig für Bußgeldbescheide, Anhörungen, Einsprüche und Zahlungsfragen zu Ordnungswidrigkeiten. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - bußgeld
+                - bußgeldbescheid
+                - anhörung
+                - einspruch
+                - ordnungswidrigkeit
+                services:
+                - Bußgeldbescheid oder Einspruch einordnen
+                unit_type: team
+          general_order_hazards:
+            name: Allgemeine Ordnung und Gefahrenabwehr
+            unit_type: division
+            knowledge_category: allgemeine_ordnung_gefahrenabwehr
+            email: ordnung-gefahrenabwehr@kommune.test
+            description: Zuständig für allgemeine Ordnungsangelegenheiten, Ruhestörungen, Lärmbeschwerden, Gefahrenstellen,
+              Verunreinigungen und ordnungsrechtliche Meldungen.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Allgemeine Ordnung und Gefahrenabwehr. Zuständig für allgemeine
+              Ordnungsangelegenheiten, Ruhestörungen, Lärmbeschwerden, Gefahrenstellen, Verunreinigungen und ordnungsrechtliche
+              Meldungen. Bleibe bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich
+              ab.
+            teams:
+              noise_complaints:
+                name: Lärm und Ruhestörung
+                description: Zuständig für Ruhestörungen, wiederkehrende Lärmbeschwerden und nächtliche Störungen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Lärm und Ruhestörung im Bereich Allgemeine Ordnung und Gefahrenabwehr.
+                  Zuständig für Ruhestörungen, wiederkehrende Lärmbeschwerden und nächtliche Störungen. Sprich natürlich als
+                  zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage
+                  keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - ruhestörung
+                - lärmbeschwerde
+                - laute musik
+                - nachts
+                - nachbarschaftslärm
+                services:
+                - Ruhestörung melden
+                unit_type: team
+              hazard_prevention:
+                name: Gefahrenstellen und Sicherheit
+                description: Zuständig für Gefahrenstellen im öffentlichen Raum und ordnungsrechtliche Sicherheitsmeldungen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Gefahrenstellen und Sicherheit im Bereich Allgemeine Ordnung
+                  und Gefahrenabwehr. Zuständig für Gefahrenstellen im öffentlichen Raum und ordnungsrechtliche Sicherheitsmeldungen.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - gefahrenstelle
+                - scherben
+                - sicherheit
+                - verunreinigung
+                - öffentlicher raum
+                services:
+                - Gefahrenstelle melden
+                - Sicherheitsrelevante Meldung einordnen
+                unit_type: team
+          animal_order:
+            name: Hunde- und Tierordnungsangelegenheiten
+            unit_type: division
+            knowledge_category: hunde_und_tierordnung
+            email: hundeordnung@kommune.test
+            description: Zuständig für Hundeanmeldung im ordnungsrechtlichen Bezug, Leinenpflicht, gefährliche Hunde und Beißvorfälle.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Hunde- und Tierordnungsangelegenheiten. Zuständig für Hundeanmeldung
+              im ordnungsrechtlichen Bezug, Leinenpflicht, gefährliche Hunde und Beißvorfälle. Bleibe bei dieser Zuständigkeit
+              und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              dog_keeping:
+                name: Hundehaltung und Leinenpflicht
+                description: Zuständig für ordnungsrechtliche Hundehaltung, Leinenpflicht und Hunde im öffentlichen Raum.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Hundehaltung und Leinenpflicht im Bereich Hunde- und Tierordnungsangelegenheiten.
+                  Zuständig für ordnungsrechtliche Hundehaltung, Leinenpflicht und Hunde im öffentlichen Raum. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - hund
+                - gefährlicher hund
+                - beißvorfall
+                - leinenpflicht
+                services:
+                - Hund anmelden
+                - Gefährlichen Hund oder Beißvorfall melden
+                unit_type: team
+              dangerous_dogs:
+                name: Gefährliche Hunde und Beißvorfälle
+                description: Zuständig für Meldungen zu gefährlichen Hunden, Beißvorfällen und akuten Gefährdungen durch Tiere.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Gefährliche Hunde und Beißvorfälle im Bereich Hunde- und Tierordnungsangelegenheiten.
+                  Zuständig für Meldungen zu gefährlichen Hunden, Beißvorfällen und akuten Gefährdungen durch Tiere. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - gefährlicher hund
+                - beißvorfall
+                - aggressiver hund
+                - hund ohne leine
+                services:
+                - Gefährlichen Hund oder Beißvorfall melden
+                unit_type: team
+          public_space_events:
+            name: Sondernutzung und Veranstaltungen im öffentlichen Raum
+            unit_type: division
+            knowledge_category: oeffentlicher_raum_veranstaltungen
+            email: sondernutzung-veranstaltungen@kommune.test
+            description: Zuständig für Sondernutzungen öffentlicher Flächen, Veranstaltungen im öffentlichen Raum, Plakatierung
+              und Werbung.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Sondernutzung und Veranstaltungen im öffentlichen Raum. Zuständig
+              für Sondernutzungen öffentlicher Flächen, Veranstaltungen im öffentlichen Raum, Plakatierung und Werbung. Bleibe
+              bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              special_use_permits:
+                name: Sondernutzung öffentlicher Flächen
+                description: Zuständig für Infostände, Warenauslagen, Container, Außengastronomie und sonstige Nutzungen öffentlicher
+                  Flächen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Sondernutzung öffentlicher Flächen im Bereich Sondernutzung
+                  und Veranstaltungen im öffentlichen Raum. Zuständig für Infostände, Warenauslagen, Container, Außengastronomie
+                  und sonstige Nutzungen öffentlicher Flächen. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen
+                  wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen
+                  Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - sondernutzung
+                - infostand
+                - warenauslage
+                - container
+                - außengastronomie
+                services:
+                - Sondernutzung öffentlicher Flächen beantragen
+                unit_type: team
+              public_events:
+                name: Veranstaltungen im öffentlichen Raum
+                description: Zuständig für Straßenfeste, Umzüge, Vereinsveranstaltungen und Anzeigen für Veranstaltungen im
+                  öffentlichen Raum.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Veranstaltungen im öffentlichen Raum im Bereich Sondernutzung
+                  und Veranstaltungen im öffentlichen Raum. Zuständig für Straßenfeste, Umzüge, Vereinsveranstaltungen und
+                  Anzeigen für Veranstaltungen im öffentlichen Raum. Sprich natürlich als zuständige Stelle, zum Beispiel
+                  mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung
+                  zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - veranstaltung
+                - straßenfest
+                - umzug
+                - vereinsfest
+                - getränkestand
+                services:
+                - Veranstaltung im öffentlichen Raum anzeigen
+                unit_type: team
+              posters_advertising:
+                name: Plakatierung und Werbung
+                description: Zuständig für Plakate, Werbetafeln und temporäre Werbung im öffentlichen Raum.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Plakatierung und Werbung im Bereich Sondernutzung und Veranstaltungen
+                  im öffentlichen Raum. Zuständig für Plakate, Werbetafeln und temporäre Werbung im öffentlichen Raum. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - plakat
+                - plakatierung
+                - werbung
+                - laterne
+                - banner
+                services:
+                - Plakatierung genehmigen lassen
+                unit_type: team
+      economy_business:
+        name: Fachbereich Gewerbe und Wirtschaft
+        unit_type: department
+        public_label: Fachbereich Gewerbe und Wirtschaft
+        internal_label: Fachbereich Gewerbe und Wirtschaft
+        email: gewerbe_wirtschaft@kommune.test
+        description: Zuständig für Gewerbeanzeigen, erlaubnispflichtige Gewerbe, Gaststätten, Märkte, Reisegewerbe und wirtschaftsbezogene
+          Erstkontakte.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Gewerbe und Wirtschaft. Zuständig für Gewerbeanzeigen, erlaubnispflichtige
+          Gewerbe, Gaststätten, Märkte, Reisegewerbe und wirtschaftsbezogene Erstkontakte. Formuliere als zuständige Stelle
+          der Stadt Musterstadt, bürgernah, präzise und quellengebunden. Fordere nur Angaben an, die für die weitere Bearbeitung
+          wirklich erforderlich sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen verweist du auf den vorgesehenen
+          Online-, Termin- oder Vorspracheweg.
+        services:
+        - Gewerbeanliegen einordnen
+        - Gaststätten- oder Marktanliegen vorprüfen
+        - Beschwerde über Betrieb zuordnen
+        keywords:
+        - gewerbe
+        - gewerbeamt
+        - wirtschaft
+        - gaststätte
+        - markt
+        - reisegewerbe
+        - betrieb
+        divisions:
+          trade_office:
+            name: Gewerbeamt
+            unit_type: division
+            knowledge_category: gewerbeamt
+            email: gewerbeamt@kommune.test
+            description: Zuständig für Gewerbeanmeldung, Gewerbeummeldung, Gewerbeabmeldung, Gaststättenerlaubnisse, Reisegewerbe,
+              Marktstände, Bewachungs- und Maklererlaubnisse, handwerkliche oder nebenberufliche Gewerbe und Beschwerden über
+              Betriebe.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Gewerbeamt. Zuständig für Gewerbeanmeldung, Gewerbeummeldung,
+              Gewerbeabmeldung, Gaststättenerlaubnisse, Reisegewerbe, Marktstände, Bewachungs- und Maklererlaubnisse, handwerkliche
+              oder nebenberufliche Gewerbe und Beschwerden über Betriebe. Bleibe bei dieser Zuständigkeit und grenze fachfremde
+              Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              business_registration:
+                name: Gewerbeanzeigen
+                description: Zuständig für Gewerbeanmeldung, Gewerbeummeldung, Gewerbeabmeldung und Betriebsverlegung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Gewerbeanzeigen im Bereich Gewerbeamt. Zuständig für Gewerbeanmeldung,
+                  Gewerbeummeldung, Gewerbeabmeldung und Betriebsverlegung. Sprich natürlich als zuständige Stelle, zum Beispiel
+                  mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung
+                  zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - gewerbe
+                - gewerbeanmeldung
+                - gewerbeummeldung
+                - gewerbeabmeldung
+                - betriebsverlegung
+                services:
+                - Gewerbe anmelden
+                - Gewerbe ummelden
+                - Gewerbe abmelden
+                - Betriebsverlegung oder Gewerbeummeldung klären
+                unit_type: team
+              regulated_trades:
+                name: Erlaubnispflichtige Gewerbe
+                description: Zuständig für Bewachungsgewerbe, Maklererlaubnisse, Handwerk und Nebengewerbe.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Erlaubnispflichtige Gewerbe im Bereich Gewerbeamt. Zuständig
+                  für Bewachungsgewerbe, Maklererlaubnisse, Handwerk und Nebengewerbe. Sprich natürlich als zuständige Stelle,
+                  zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - nebengewerbe
+                - online-shop
+                - bewachungsgewerbe
+                - makler
+                - immobilienmakler
+                - handwerk
+                services:
+                - Bewachungsgewerbe oder Maklererlaubnis klären
+                - Handwerks- oder Nebengewerbe einordnen
+                unit_type: team
+              business_complaints:
+                name: Beschwerden über Betriebe
+                description: Zuständig für Beschwerden über Betriebe, Läden und gewerbliche Tätigkeiten im Zuständigkeitsbereich
+                  des
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Beschwerden über Betriebe im Bereich Gewerbeamt. Zuständig für
+                  Beschwerden über Betriebe, Läden und gewerbliche Tätigkeiten im Zuständigkeitsbereich des Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - betrieb beschwerde
+                - laden
+                services:
+                - Beschwerde über Betrieb oder Laden prüfen
+                unit_type: team
+              hospitality_permits:
+                name: Gaststätten und Alkoholausschank
+                description: Zuständig für Gaststättenerlaubnisse, Alkoholausschank und gaststättenrechtliche Unterlagen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Gaststätten und Alkoholausschank im Bereich Gewerbeamt. Zuständig
+                  für Gaststättenerlaubnisse, Alkoholausschank und gaststättenrechtliche Unterlagen. Sprich natürlich als
+                  zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage
+                  keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - gaststätte
+                - café
+                - restaurant
+                - alkoholausschank
+                - gaststättenerlaubnis
+                services:
+                - Gaststättenerlaubnis klären
+                unit_type: team
+              markets_travel_trade:
+                name: Märkte und Reisegewerbe
+                description: Zuständig für Marktstände, Wochenmärkte, Reisegewerbekarten und mobilen Verkauf.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Märkte und Reisegewerbe im Bereich Gewerbeamt. Zuständig für
+                  Marktstände, Wochenmärkte, Reisegewerbekarten und mobilen Verkauf. Sprich natürlich als zuständige Stelle,
+                  zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - wochenmarkt
+                - marktstand
+                - reisegewerbe
+                - mobiler verkauf
+                services:
+                - Marktstand anmelden
+                - Reisegewerbe einordnen
+                unit_type: team
+  department_group_3:
+    name: Dezernat III - Soziales, Jugend, Familie und Bildung
+    unit_type: department_group
+    description: Dezernat für soziale Leistungen, Teilhabe, Jugend, Familie, Betreuung, Schule und Bildung.
+    departments:
+      social_affairs:
+        name: Fachbereich Soziales und Teilhabe
+        unit_type: department
+        public_label: Fachbereich Soziales und Teilhabe
+        internal_label: Fachbereich Soziales und Teilhabe
+        email: soziales@kommune.test
+        description: Bündelt soziale Leistungen, Wohnen, Teilhabe, Senioren, Behinderung, Integration und kommunale Ermäßigungen.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Soziales und Teilhabe. Bündelt soziale Leistungen, Wohnen, Teilhabe,
+          Senioren, Behinderung, Integration und kommunale Ermäßigungen. Formuliere als zuständige Stelle der Stadt Musterstadt,
+          bürgernah, präzise und quellengebunden. Fordere nur Angaben an, die für die weitere Bearbeitung wirklich erforderlich
+          sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen verweist du auf den vorgesehenen Online-, Termin- oder
+          Vorspracheweg.
+        services:
+        - Soziale Leistung einordnen
+        - Wohngeld- oder Grundsicherungsanliegen vorprüfen
+        - Teilhabe- oder Integrationsangebot zuordnen
+        keywords:
+        - sozialamt
+        - grundsicherung
+        - sozialhilfe
+        - wohngeld
+        - teilhabe
+        - integration
+        - behinderung
+        divisions:
+          social_benefits_housing:
+            name: Soziale Leistungen und Wohnen
+            unit_type: division
+            knowledge_category: soziales
+            email: soziale_leistungen@kommune.test
+            description: Bearbeitet existenzsichernde Leistungen, Wohngeld, Wohnberechtigung und drohenden Wohnungsverlust.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Soziale Leistungen und Wohnen. Bearbeitet existenzsichernde Leistungen,
+              Wohngeld, Wohnberechtigung und drohenden Wohnungsverlust. Bleibe bei dieser Zuständigkeit und grenze fachfremde
+              Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              basic_security:
+                name: Grundsicherung und Sozialhilfe
+                description: Zuständig für Grundsicherung, Sozialhilfe und existenzsichernde Leistungen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Grundsicherung und Sozialhilfe im Bereich Soziale Leistungen
+                  und Wohnen. Zuständig für Grundsicherung, Sozialhilfe und existenzsichernde Leistungen. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - grundsicherung
+                - sozialhilfe
+                - existenzsicherung
+                - lebensunterhalt
+                services:
+                - Grundsicherung oder Sozialhilfe einordnen
+                unit_type: team
+              housing_benefits:
+                name: Wohngeld und Wohnberechtigung
+                description: Zuständig für Wohngeld, Mietbelastung, Wohnberechtigung und wohnbezogene Nachweise.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Wohngeld und Wohnberechtigung im Bereich Soziale Leistungen
+                  und Wohnen. Zuständig für Wohngeld, Mietbelastung, Wohnberechtigung und wohnbezogene Nachweise. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - wohngeld
+                - miete
+                - wohnkosten
+                - wohnberechtigung
+                services:
+                - Wohngeldantrag vorbereiten
+                - Wohnberechtigung klären
+                unit_type: team
+              urgent_social_support:
+                name: Akute soziale Notlagen
+                description: Zuständig für dringende soziale Notlagen, Stromnachzahlungen, drohende Versorgungssperren und
+                  erste Einordnung von Hilfebedarf.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Akute soziale Notlagen im Bereich Soziale Leistungen und Wohnen.
+                  Zuständig für dringende soziale Notlagen, Stromnachzahlungen, drohende Versorgungssperren und erste Einordnung
+                  von Hilfebedarf. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“,
+                  „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist
+                  du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - notlage
+                - stromnachzahlung
+                - versorgungssperre
+                - dringend hilfe
+                - mittellos
+                services:
+                - Akute soziale Notlage vorprüfen
+                unit_type: team
+          participation_seniors_integration:
+            name: Teilhabe, Senioren und Integration
+            unit_type: division
+            knowledge_category: soziales
+            email: teilhabe_integration@kommune.test
+            description: Bearbeitet Teilhabe, Seniorenberatung, Schwerbehindertenangelegenheiten, Bildung und Teilhabe sowie
+              Integrations- und Ermäßigungsanliegen.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Teilhabe, Senioren und Integration. Bearbeitet Teilhabe, Seniorenberatung,
+              Schwerbehindertenangelegenheiten, Bildung und Teilhabe sowie Integrations- und Ermäßigungsanliegen. Bleibe bei
+              dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              disability_seniors:
+                name: Teilhabe, Senioren und Behinderung
+                description: Zuständig für Seniorenberatung, Teilhabe, Schwerbehindertenangelegenheiten und Pflegehinweise.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Teilhabe, Senioren und Behinderung im Bereich Teilhabe, Senioren
+                  und Integration. Zuständig für Seniorenberatung, Teilhabe, Schwerbehindertenangelegenheiten und Pflegehinweise.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - seniorenberatung
+                - pflege
+                - teilhabe
+                - schwerbehindertenausweis
+                - behinderung
+                services:
+                - Seniorenberatung oder Teilhabe klären
+                - Schwerbehindertenangelegenheiten einordnen
+                unit_type: team
+              integration_language:
+                name: Integration und Sprachkurse
+                description: Zuständig für Integrationsangebote, Sprachkursinformationen und erste Orientierung für Zugewanderte.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Integration und Sprachkurse im Bereich Teilhabe, Senioren und
+                  Integration. Zuständig für Integrationsangebote, Sprachkursinformationen und erste Orientierung für Zugewanderte.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - integration
+                - sprachkurs
+                - zuwanderung
+                - neu in musterstadt
+                services:
+                - Integrationsangebot oder Sprachkursinformation einordnen
+                unit_type: team
+              discounts_education_participation:
+                name: Ermäßigungen und Bildungsteilhabe
+                description: Zuständig für Ermäßigungen, Bildungs- und Teilhabehinweise sowie Nachweise bei geringem Einkommen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Ermäßigungen und Bildungsteilhabe im Bereich Teilhabe, Senioren
+                  und Integration. Zuständig für Ermäßigungen, Bildungs- und Teilhabehinweise sowie Nachweise bei geringem
+                  Einkommen. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“
+                  oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - ermäßigung
+                - kulturpass
+                - bildung
+                - teilhabe
+                - geringes einkommen
+                services:
+                - Ermäßigung oder Bildungsteilhabe klären
+                unit_type: team
+      youth_education:
+        name: Fachbereich Jugend, Familie und Bildung
+        unit_type: department
+        public_label: Fachbereich Jugend, Familie und Bildung
+        internal_label: Fachbereich Jugend, Familie und Bildung
+        email: jugend_bildung@kommune.test
+        description: Zuständig für Kinderbetreuung, Kitaplatz-Vormerkung, Elternbeiträge, Ferienbetreuung, Kindertagespflege,
+          Unterhaltsvorschuss, Jugendfreizeit, Familienberatung, frühe Hilfen, Spielgruppen und Beschwerden zu Betreuungseinrichtungen.
+          Zuständig für Schulträgeraufgaben, Einschulung, Schulbezirke, Schülerbeförderung, Mensa, Ganztagsbetreuung, Schulwechsel,
+          Schulgebäude, digitale Endgeräte, Lernmittel, Schulsozialarbeit, Sporthallen- oder Schulraumnutzung, Schulweg und
+          Schulumfeld.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Jugend, Familie und Bildung. Zuständig für Kinderbetreuung, Kitaplatz-Vormerkung,
+          Elternbeiträge, Ferienbetreuung, Kindertagespflege, Unterhaltsvorschuss, Jugendfreizeit, Familienberatung, frühe
+          Hilfen, Spielgruppen und Beschwerden zu Betreuungseinrichtungen. Zuständig für Schulträgeraufgaben, Einschulung,
+          Schulbezirke, Schülerbeförderung, Mensa, Ganztagsbetreuung, Schulwechsel, Schulgebäude, digitale Endgeräte, Lernmittel,
+          Schulsozialarbeit, Sporthallen- oder Schulraumnutzung, Schulweg und Schulumfeld. Formuliere als zuständige Stelle
+          der Stadt Musterstadt, bürgernah, präzise und quellengebunden. Fordere nur Angaben an, die für die weitere Bearbeitung
+          wirklich erforderlich sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen verweist du auf den vorgesehenen
+          Online-, Termin- oder Vorspracheweg.
+        services:
+        - Kita- oder Familienanliegen einordnen
+        - Schulangelegenheit zuordnen
+        keywords:
+        - jugendamt
+        - kita
+        - kindertagespflege
+        - elternbeitrag
+        - familienberatung
+        - schule
+        divisions:
+          youth_family:
+            name: Jugend und Familie
+            unit_type: division
+            knowledge_category: jugend_familie
+            email: jugend-familie@kommune.test
+            description: Zuständig für Kinderbetreuung, Kitaplatz-Vormerkung, Elternbeiträge, Ferienbetreuung, Kindertagespflege,
+              Unterhaltsvorschuss, Jugendfreizeit, Familienberatung, frühe Hilfen, Spielgruppen und Beschwerden zu Betreuungseinrichtungen.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Jugend und Familie. Zuständig für Kinderbetreuung, Kitaplatz-Vormerkung,
+              Elternbeiträge, Ferienbetreuung, Kindertagespflege, Unterhaltsvorschuss, Jugendfreizeit, Familienberatung, frühe
+              Hilfen, Spielgruppen und Beschwerden zu Betreuungseinrichtungen. Bleibe bei dieser Zuständigkeit und grenze
+              fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              childcare:
+                name: Kinderbetreuung und Tagespflege
+                description: Zuständig für Kitaplatz-Vormerkung, Ferienbetreuung und Kindertagespflege.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Kinderbetreuung und Tagespflege im Bereich Jugend und Familie.
+                  Zuständig für Kitaplatz-Vormerkung, Ferienbetreuung und Kindertagespflege. Sprich natürlich als zuständige
+                  Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - kitaplatz
+                - kita
+                - vormerkung
+                - ferienbetreuung
+                - kindertagespflege
+                - tagesmutter
+                services:
+                - Kitaplatz vormerken
+                - Ferienbetreuung anmelden
+                - Kindertagespflege klären
+                unit_type: team
+              childcare_fees_benefits:
+                name: Elternbeiträge und Familienleistungen
+                description: Zuständig für Elternbeiträge, Beitragsbescheide, Unterhaltsvorschuss und Einkommensprüfung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Elternbeiträge und Familienleistungen im Bereich Jugend und
+                  Familie. Zuständig für Elternbeiträge, Beitragsbescheide, Unterhaltsvorschuss und Einkommensprüfung. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - elternbeitrag
+                - beitragsbescheid
+                - einkommensprüfung
+                - unterhaltsvorschuss
+                services:
+                - Elternbeiträge Kinderbetreuung klären
+                - Unterhaltsvorschuss Erstkontakt einordnen
+                unit_type: team
+              family_support_participation:
+                name: Familienberatung und Beteiligung
+                description: Zuständig für Familienberatung, frühe Hilfen, Jugendfreizeit, Beteiligung und Eltern-Kind-Angebote.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Familienberatung und Beteiligung im Bereich Jugend und Familie.
+                  Zuständig für Familienberatung, frühe Hilfen, Jugendfreizeit, Beteiligung und Eltern-Kind-Angebote. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - jugendfreizeit
+                - beteiligung
+                - familienberatung
+                - frühe hilfen
+                - spielgruppe
+                - eltern-kind
+                services:
+                - Jugendfreizeit und Beteiligung klären
+                - Familienberatung und frühe Hilfen anfragen
+                - Spielgruppen und Eltern-Kind-Angebote klären
+                unit_type: team
+              childcare_complaints:
+                name: Beschwerden zu Betreuungseinrichtungen
+                description: Zuständig für Beschwerden und Hinweise zu Betreuungseinrichtungen im kommunalen Zuständigkeitsbereich.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Beschwerden zu Betreuungseinrichtungen im Bereich Jugend und
+                  Familie. Zuständig für Beschwerden und Hinweise zu Betreuungseinrichtungen im kommunalen Zuständigkeitsbereich.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - beschwerde kita
+                - betreuungseinrichtung
+                services:
+                - Beschwerde zu Betreuungseinrichtung prüfen
+                unit_type: team
+          school_education:
+            name: Schule und Bildung
+            unit_type: division
+            knowledge_category: schule_bildung
+            email: schule-bildung@kommune.test
+            description: Zuständig für Schulträgeraufgaben, Einschulung, Schulbezirke, Schülerbeförderung, Mensa, Ganztagsbetreuung,
+              Schulwechsel, Schulgebäude, digitale Endgeräte, Lernmittel, Schulsozialarbeit, Sporthallen- oder Schulraumnutzung,
+              Schulweg und Schulumfeld.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Schule und Bildung. Zuständig für Schulträgeraufgaben, Einschulung,
+              Schulbezirke, Schülerbeförderung, Mensa, Ganztagsbetreuung, Schulwechsel, Schulgebäude, digitale Endgeräte,
+              Lernmittel, Schulsozialarbeit, Sporthallen- oder Schulraumnutzung, Schulweg und Schulumfeld. Bleibe bei dieser
+              Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              school_enrollment_transfer:
+                name: Schulaufnahme und Schulwechsel
+                description: Zuständig für Einschulung, Schulbezirk und Schulwechsel innerhalb der Kommune.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Schulaufnahme und Schulwechsel im Bereich Schule und Bildung.
+                  Zuständig für Einschulung, Schulbezirk und Schulwechsel innerhalb der Kommune. Sprich natürlich als zuständige
+                  Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - einschulung
+                - schulbezirk
+                - grundschule
+                - schulwechsel
+                services:
+                - Einschulung und Schulbezirk klären
+                - Schulwechsel innerhalb der Kommune einordnen
+                unit_type: team
+              transport_meals_after_school:
+                name: Schülerbeförderung, Mensa und Ganztag
+                description: Zuständig für Schülerbeförderung, Schulweg, Mensa, Ganztagsbetreuung und Betreuungskosten.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Schülerbeförderung, Mensa und Ganztag im Bereich Schule und
+                  Bildung. Zuständig für Schülerbeförderung, Schulweg, Mensa, Ganztagsbetreuung und Betreuungskosten. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - schülerbeförderung
+                - fahrkarte
+                - schulweg
+                - mensa
+                - ganztag
+                - ganztagsbetreuung
+                services:
+                - Schülerbeförderung beantragen
+                - Mensa und Ganztagsbetreuung klären
+                unit_type: team
+              facilities_equipment:
+                name: Ausstattung, Lernmittel und Schulgebäude
+                description: Zuständig für Schulgebäude, Mängelmeldungen, digitale Endgeräte, Lernmittel und Schulbuchausleihe.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Ausstattung, Lernmittel und Schulgebäude im Bereich Schule und
+                  Bildung. Zuständig für Schulgebäude, Mängelmeldungen, digitale Endgeräte, Lernmittel und Schulbuchausleihe.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - schulgebäude
+                - mangel
+                - digitale endgeräte
+                - tablet
+                - lernmittel
+                - schulbuchausleihe
+                services:
+                - Schulgebäude-Mangelmeldung einordnen
+                - Digitale Endgeräte oder Lernmittel klären
+                unit_type: team
+              social_work_room_use:
+                name: Schulsozialarbeit und Raumnutzung
+                description: Zuständig für Schulsozialarbeit, Sporthallen, Schulraumnutzung und Beschwerden zu Schulweg oder
+                  Schulumfeld.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Schulsozialarbeit und Raumnutzung im Bereich Schule und Bildung.
+                  Zuständig für Schulsozialarbeit, Sporthallen, Schulraumnutzung und Beschwerden zu Schulweg oder Schulumfeld.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - schulsozialarbeit
+                - sporthalle
+                - schulraumnutzung
+                - beschwerde schulweg
+                - schulumfeld
+                services:
+                - Schulsozialarbeit kontaktieren
+                - Sporthalle oder Schulraumnutzung anfragen
+                - Beschwerde Schulweg oder Schulumfeld prüfen
+                unit_type: team
+  department_group_4:
+    name: Dezernat IV - Stadtentwicklung, Umwelt und Infrastruktur
+    unit_type: department_group
+    description: Dezernat für Stadtentwicklung, Bauordnung, Umwelt, Klima, Infrastruktur und Betriebshof.
+    departments:
+      urban_development_building:
+        name: Fachbereich Stadtentwicklung und Bauordnung
+        unit_type: department
+        public_label: Fachbereich Stadtentwicklung und Bauordnung
+        internal_label: Fachbereich Stadtentwicklung und Bauordnung
+        email: stadtentwicklung_bauordnung@kommune.test
+        description: Zuständig für Bauordnung, Bauverwaltung, Stadtplanung, Bauleitplanung, Stadtentwicklung und planungsbezogene
+          Bürgerbeteiligung.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Stadtentwicklung und Bauordnung. Zuständig für Bauordnung, Bauverwaltung,
+          Stadtplanung, Bauleitplanung, Stadtentwicklung und planungsbezogene Bürgerbeteiligung. Formuliere als zuständige
+          Stelle der Stadt Musterstadt, bürgernah, präzise und quellengebunden. Fordere nur Angaben an, die für die weitere
+          Bearbeitung wirklich erforderlich sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen verweist du auf den
+          vorgesehenen Online-, Termin- oder Vorspracheweg.
+        services:
+        - Bauvorhaben einordnen
+        - Bauakte oder Baulast klären
+        - Stadtplanungsanliegen zuordnen
+        keywords:
+        - bauamt
+        - bauordnung
+        - bauantrag
+        - denkmalschutz
+        - bauakte
+        - stadtplanung
+        - bebauungsplan
+        divisions:
+          building_control:
+            name: Bauordnung und Bauverwaltung
+            unit_type: division
+            knowledge_category: bauamt
+            email: bauamt@kommune.test
+            description: Bearbeitet Bauanträge, Bauvoranfragen, Baugenehmigungen, Denkmalschutz, Baulasten und Bauakten.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Bauordnung und Bauverwaltung. Bearbeitet Bauanträge, Bauvoranfragen,
+              Baugenehmigungen, Denkmalschutz, Baulasten und Bauakten. Bleibe bei dieser Zuständigkeit und grenze fachfremde
+              Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              building_permits:
+                name: Bauvorhaben und Genehmigungen
+                description: Zuständig für Bauanträge, Bauvoranfragen, Nutzungsänderungen, Garagen, Carports und Nebenanlagen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Bauvorhaben und Genehmigungen im Bereich Bauordnung und Bauverwaltung.
+                  Zuständig für Bauanträge, Bauvoranfragen, Nutzungsänderungen, Garagen, Carports und Nebenanlagen. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - baugenehmigung
+                - bauantrag
+                - bauvoranfrage
+                - garage
+                - carport
+                - nebenanlage
+                - nutzungsänderung
+                services:
+                - Bauantrag einreichen
+                - Baugenehmigung klären
+                - Bauvoranfrage stellen
+                - Garage, Carport oder Nebenanlage einordnen
+                unit_type: team
+              heritage_land_charges:
+                name: Denkmalschutz und Baulasten
+                description: Zuständig für Denkmalschutzfragen, Baulasten und baurechtliche Lasten im Grundstücksbezug.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Denkmalschutz und Baulasten im Bereich Bauordnung und Bauverwaltung.
+                  Zuständig für Denkmalschutzfragen, Baulasten und baurechtliche Lasten im Grundstücksbezug. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - denkmalschutz
+                - denkmal
+                - baulast
+                - baulastenverzeichnis
+                services:
+                - Denkmalschutz bei Bauvorhaben klären
+                - Baulast-Auskunft einordnen
+                unit_type: team
+              building_records:
+                name: Bauakten und Akteneinsicht
+                description: Zuständig für Bauakten, Akteneinsicht und vorhandene baurechtliche Unterlagen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Bauakten und Akteneinsicht im Bereich Bauordnung und Bauverwaltung.
+                  Zuständig für Bauakten, Akteneinsicht und vorhandene baurechtliche Unterlagen. Sprich natürlich als zuständige
+                  Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - bauakte
+                - akteneinsicht
+                - bauunterlagen
+                - archivakte
+                services:
+                - Bauakte einsehen
+                - Akteneinsicht vorbereiten
+                unit_type: team
+          urban_planning:
+            name: Stadtplanung
+            unit_type: division
+            knowledge_category: stadtplanung
+            email: stadtplanung@kommune.test
+            description: Zuständig für Bebauungspläne, Flächennutzungspläne, Bauleitplanung, Bürgerbeteiligung, Baulandentwicklung,
+              Nachverdichtung, Straßenbenennung, Hausnummern, Spielplatz- und Grünflächenplanung, Verkehrsplanung, Innenstadtentwicklung
+              und stadtplanerische Klima- oder Solarbezüge.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Stadtplanung. Zuständig für Bebauungspläne, Flächennutzungspläne,
+              Bauleitplanung, Bürgerbeteiligung, Baulandentwicklung, Nachverdichtung, Straßenbenennung, Hausnummern, Spielplatz-
+              und Grünflächenplanung, Verkehrsplanung, Innenstadtentwicklung und stadtplanerische Klima- oder Solarbezüge.
+              Bleibe bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              zoning_plans:
+                name: Bauleitplanung
+                description: Zuständig für Bebauungspläne, Flächennutzungspläne und städtebauliche Entwicklung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Bauleitplanung im Bereich Stadtplanung. Zuständig für Bebauungspläne,
+                  Flächennutzungspläne und städtebauliche Entwicklung. Sprich natürlich als zuständige Stelle, zum Beispiel
+                  mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung
+                  zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - bebauungsplan
+                - b-plan
+                - flächennutzungsplan
+                - fnp
+                - bauleitplanung
+                services:
+                - Bebauungsplan einsehen
+                - Flächennutzungsplan und Stadtentwicklung einordnen
+                unit_type: team
+              planning_participation:
+                name: Beteiligung und Stadtentwicklung
+                description: Zuständig für Bürgerbeteiligung, Stellungnahmen, Baulandentwicklung, Nachverdichtung und Innenstadtentwicklung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Beteiligung und Stadtentwicklung im Bereich Stadtplanung. Zuständig
+                  für Bürgerbeteiligung, Stellungnahmen, Baulandentwicklung, Nachverdichtung und Innenstadtentwicklung. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - bürgerbeteiligung
+                - stellungnahme
+                - einwendung
+                - bauland
+                - nachverdichtung
+                - innenstadtentwicklung
+                - leerstand
+                services:
+                - Bürgerbeteiligung in der Bauleitplanung klären
+                - Baulandentwicklung und Nachverdichtung einordnen
+                - Innenstadtentwicklung und Leerstand klären
+                unit_type: team
+              streets_green_transport_planning:
+                name: Straßen, Grünflächen und Verkehr
+                description: Zuständig für Straßenbenennung, Hausnummern, Spielplatz- und Grünflächenplanung sowie Verkehrsplanung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Straßen, Grünflächen und Verkehr im Bereich Stadtplanung. Zuständig
+                  für Straßenbenennung, Hausnummern, Spielplatz- und Grünflächenplanung sowie Verkehrsplanung. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - straßenbenennung
+                - hausnummer
+                - spielplatzplanung
+                - grünflächenplanung
+                - verkehrsplanung
+                - verkehrsberuhigung
+                services:
+                - Straßenbenennung und Hausnummern im Planungsbezug klären
+                - Spielplatz- und Grünflächenplanung einordnen
+                - Verkehrsplanung und Verkehrsberuhigung klären
+                unit_type: team
+              climate_solar_planning:
+                name: Klima- und Solarbezüge in der Planung
+                description: Zuständig für stadtplanerische Fragen zu Solar, Klima und Bauleitplanung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Klima- und Solarbezüge in der Planung im Bereich Stadtplanung.
+                  Zuständig für stadtplanerische Fragen zu Solar, Klima und Bauleitplanung. Sprich natürlich als zuständige
+                  Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - solar
+                - klima
+                - planung
+                services:
+                - Solar, Klima und Bauleitplanung einordnen
+                unit_type: team
+      environment_climate:
+        name: Fachbereich Umwelt und Klima
+        unit_type: department
+        public_label: Fachbereich Umwelt und Klima
+        internal_label: Fachbereich Umwelt und Klima
+        email: umwelt_klima@kommune.test
+        description: Zuständig für Umweltbeschwerden, Gewässer, Baum- und Artenschutz, Klimaschutz, Energie und Nachhaltigkeit.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Umwelt und Klima. Zuständig für Umweltbeschwerden, Gewässer, Baum-
+          und Artenschutz, Klimaschutz, Energie und Nachhaltigkeit. Formuliere als zuständige Stelle der Stadt Musterstadt,
+          bürgernah, präzise und quellengebunden. Fordere nur Angaben an, die für die weitere Bearbeitung wirklich erforderlich
+          sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen verweist du auf den vorgesehenen Online-, Termin- oder
+          Vorspracheweg.
+        services:
+        - Umweltbeschwerde einordnen
+        - Baum- oder Artenschutzfrage klären
+        - Klimaschutz- oder Energiehinweis zuordnen
+        keywords:
+        - umwelt
+        - klima
+        - baumschutz
+        - artenschutz
+        - gewässer
+        - photovoltaik
+        - nachhaltigkeit
+        divisions:
+          environmental_services:
+            name: Umwelt und Klima
+            unit_type: division
+            knowledge_category: umwelt_klima
+            email: umwelt-klima@kommune.test
+            description: Zuständig für Umwelt-, Natur- und Klimaschutz, Baumschutz, Artenschutz, Grünflächen mit Umweltbezug,
+              Gewässer- und Ölverschmutzungen, Umweltbeschwerden, Klimaschutzberatung, Photovoltaik-Hinweise, Lichtverschmutzung,
+              Geruch und Nachhaltigkeitsprojekte.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Umwelt und Klima. Zuständig für Umwelt-, Natur- und Klimaschutz,
+              Baumschutz, Artenschutz, Grünflächen mit Umweltbezug, Gewässer- und Ölverschmutzungen, Umweltbeschwerden, Klimaschutzberatung,
+              Photovoltaik-Hinweise, Lichtverschmutzung, Geruch und Nachhaltigkeitsprojekte. Bleibe bei dieser Zuständigkeit
+              und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              environmental_complaints_waters:
+                name: Umweltbeschwerden und Gewässer
+                description: Zuständig für Umweltbeschwerden, Gewässer, Ölverschmutzungen, Lichtverschmutzung und Geruch.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Umweltbeschwerden und Gewässer im Bereich Umwelt und Klima.
+                  Zuständig für Umweltbeschwerden, Gewässer, Ölverschmutzungen, Lichtverschmutzung und Geruch. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - umweltbeschwerde
+                - gewässer
+                - ölverschmutzung
+                - lichtverschmutzung
+                - geruch
+                services:
+                - Umweltbeschwerde melden
+                - Gewässer oder Ölverschmutzung melden
+                - Lichtverschmutzung oder Geruch melden
+                unit_type: team
+              climate_energy:
+                name: Klima und Energie
+                description: Zuständig für Klimaschutzberatung, Photovoltaik und kommunale Klimahinweise.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Klima und Energie im Bereich Umwelt und Klima. Zuständig für
+                  Klimaschutzberatung, Photovoltaik und kommunale Klimahinweise. Sprich natürlich als zuständige Stelle, zum
+                  Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung
+                  zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - klimaschutz
+                - energieberatung
+                - photovoltaik
+                - solar
+                services:
+                - Klimaschutzberatung Erstkontakt einordnen
+                - Photovoltaik und kommunale Hinweise klären
+                unit_type: team
+              sustainability_green:
+                name: Grünflächen und Nachhaltigkeit
+                description: Zuständig für Grünflächen mit Umweltbezug, Spielplätze, Nachhaltigkeitsprojekte und Bürgerideen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Grünflächen und Nachhaltigkeit im Bereich Umwelt und Klima.
+                  Zuständig für Grünflächen mit Umweltbezug, Spielplätze, Nachhaltigkeitsprojekte und Bürgerideen. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - grünfläche
+                - spielplatz
+                - nachhaltigkeit
+                - bürgeridee
+                services:
+                - Grünflächen und Spielplätze mit Umweltbezug einordnen
+                - Nachhaltigkeitsprojekte und Bürgerideen klären
+                unit_type: team
+              tree_protection:
+                name: Baumschutz und Baumfällung
+                description: Zuständig für Baumschutz, Baumfällungen, Rückschnitt und kommunale Hinweise zu geschützten Bäumen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Baumschutz und Baumfällung im Bereich Umwelt und Klima. Zuständig
+                  für Baumschutz, Baumfällungen, Rückschnitt und kommunale Hinweise zu geschützten Bäumen. Sprich natürlich
+                  als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - baumschutz
+                - baumfällung
+                - baum schneiden
+                - rückschnitt
+                services:
+                - Baumschutz oder Baumfällung klären
+                unit_type: team
+              species_protection:
+                name: Artenschutz
+                description: Zuständig für Artenschutzfragen, geschützte Tiere, Nester und ökologische Belange bei Vorhaben.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Artenschutz im Bereich Umwelt und Klima. Zuständig für Artenschutzfragen,
+                  geschützte Tiere, Nester und ökologische Belange bei Vorhaben. Sprich natürlich als zuständige Stelle, zum
+                  Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung
+                  zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - artenschutz
+                - geschützte art
+                - vögel
+                - nest
+                - fledermaus
+                services:
+                - Artenschutzanliegen einordnen
+                unit_type: team
+      infrastructure_operations:
+        name: Fachbereich Infrastruktur und Betriebshof
+        unit_type: department
+        public_label: Fachbereich Infrastruktur und Betriebshof
+        internal_label: Fachbereich Infrastruktur und Betriebshof
+        email: infrastruktur_betriebshof@kommune.test
+        description: Zuständig für Tiefbau, technische Infrastruktur, Betriebshof, Abfall, Winterdienst, Straßenreinigung,
+          Grünpflege, Spielplätze und kommunale Mängelmeldungen.
+        answer_role: >-
+          Du antwortest aus der Perspektive des Fachbereich Infrastruktur und Betriebshof. Zuständig für Tiefbau, technische
+          Infrastruktur, Betriebshof, Abfall, Winterdienst, Straßenreinigung, Grünpflege, Spielplätze und kommunale Mängelmeldungen.
+          Formuliere als zuständige Stelle der Stadt Musterstadt, bürgernah, präzise und quellengebunden. Fordere nur Angaben
+          an, die für die weitere Bearbeitung wirklich erforderlich sind. Bei Anträgen, Erklärungen oder verbindlichen Vorgängen
+          verweist du auf den vorgesehenen Online-, Termin- oder Vorspracheweg.
+        services:
+        - Straßen- oder Gehwegmangel melden
+        - Entwässerung oder Grundstücksanschluss klären
+        - Abfall- oder Betriebshofmeldung zuordnen
+        keywords:
+        - infrastruktur
+        - betriebshof
+        - tiefbau
+        - straße
+        - gehweg
+        - abfall
+        - winterdienst
+        - spielplatz
+        divisions:
+          civil_engineering:
+            name: Tiefbau und technische Infrastruktur
+            unit_type: division
+            knowledge_category: bauamt
+            email: tiefbau@kommune.test
+            description: Bearbeitet Straßenaufbrüche, Baustellen, Mängel an Gehwegen und Straßen, barrierefreien Umbau sowie
+              Entwässerung und Grundstücksanschlüsse.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Tiefbau und technische Infrastruktur. Bearbeitet Straßenaufbrüche,
+              Baustellen, Mängel an Gehwegen und Straßen, barrierefreien Umbau sowie Entwässerung und Grundstücksanschlüsse.
+              Bleibe bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              road_works_accessibility:
+                name: Tiefbau, Straßen und Barrierefreiheit
+                description: Zuständig für Straßenaufbruch, Baustellen, Gehwege, Straßen, Mängelmeldungen und barrierefreien
+                  Umbau
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Tiefbau, Straßen und Barrierefreiheit im Bereich Tiefbau und
+                  technische Infrastruktur. Zuständig für Straßenaufbruch, Baustellen, Gehwege, Straßen, Mängelmeldungen und
+                  barrierefreien Umbau Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“,
+                  „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist
+                  du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - straßenaufbruch
+                - baustelle
+                - gehweg
+                - schlagloch
+                - barrierefrei
+                - öffentliches gebäude
+                - mangel
+                services:
+                - Straßenaufbruch oder Baustelle anmelden
+                - Mängel an Gehwegen oder Straßen melden
+                - Barrierefreien Umbau öffentlicher Gebäude klären
+                unit_type: team
+              drainage_connections:
+                name: Entwässerung und Grundstücksanschlüsse
+                description: Zuständig für Grundstücksentwässerung, Kanalanschluss, Regenwasser und Anschlussfragen im baulichen
+                  Kontext.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Entwässerung und Grundstücksanschlüsse im Bereich Tiefbau und
+                  technische Infrastruktur. Zuständig für Grundstücksentwässerung, Kanalanschluss, Regenwasser und Anschlussfragen
+                  im baulichen Kontext. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“,
+                  „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist
+                  du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - entwässerung
+                - grundstücksanschluss
+                - kanalanschluss
+                - regenwasser
+                services:
+                - Entwässerung und Grundstücksanschluss klären
+                unit_type: team
+            keywords: []
+          depot_waste_green:
+            name: Betriebshof, Abfall und Grünflächen
+            unit_type: division
+            knowledge_category: abfall_bauhof
+            email: abfall-bauhof@kommune.test
+            description: Zuständig für Abfallentsorgung, Sperrmüll, illegale Müllablagerungen, Straßenreinigung, Winterdienst,
+              defekte Straßenbeleuchtung, Spielplatzschäden, Grünpflege, Mäharbeiten, Straßenschäden, verstopfte Gullys, Entwässerung
+              im Straßenraum und kommunale Beschilderung.
+            answer_role: >-
+              Du antwortest aus der Perspektive des Bereichs Betriebshof, Abfall und Grünflächen. Zuständig für Abfallentsorgung,
+              Sperrmüll, illegale Müllablagerungen, Straßenreinigung, Winterdienst, defekte Straßenbeleuchtung, Spielplatzschäden,
+              Grünpflege, Mäharbeiten, Straßenschäden, verstopfte Gullys, Entwässerung im Straßenraum und kommunale Beschilderung.
+              Bleibe bei dieser Zuständigkeit und grenze fachfremde Punkte ruhig gegen den zuständigen Fachbereich ab.
+            teams:
+              cleaning_winter_service:
+                name: Straßenreinigung und Winterdienst
+                description: Zuständig für Straßenreinigung, Winterdienst, Räumung und Streupflicht im kommunalen Zuständigkeitsbereich.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Straßenreinigung und Winterdienst im Bereich Betriebshof, Abfall
+                  und Grünflächen. Zuständig für Straßenreinigung, Winterdienst, Räumung und Streupflicht im kommunalen Zuständigkeitsbereich.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - straßenreinigung
+                - winterdienst
+                - räumung
+                - streupflicht
+                services:
+                - Winterdienst und Straßenreinigung klären
+                unit_type: team
+              waste_collection:
+                name: Abfallbehälter und Abfallkalender
+                description: Zuständig für Abfallbehälter, Tonnen, Abfallkalender, Abfuhrtermine und allgemeine Fragen zur
+                  Abfallentsorgung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Abfallbehälter und Abfallkalender im Bereich Betriebshof, Abfall
+                  und Grünflächen. Zuständig für Abfallbehälter, Tonnen, Abfallkalender, Abfuhrtermine und allgemeine Fragen
+                  zur Abfallentsorgung. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“,
+                  „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist
+                  du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - abfall
+                - abfallkalender
+                - tonne
+                - abfuhrtermin
+                - mülltonne
+                services:
+                - Abfallentsorgung oder Abfallkalender klären
+                unit_type: team
+              bulky_waste:
+                name: Sperrmüll
+                description: Zuständig für Sperrmüllanmeldung, Abholtermine und Vorbereitung von Sperrmüllvorgängen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Sperrmüll im Bereich Betriebshof, Abfall und Grünflächen. Zuständig
+                  für Sperrmüllanmeldung, Abholtermine und Vorbereitung von Sperrmüllvorgängen. Sprich natürlich als zuständige
+                  Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche
+                  Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - sperrmüll
+                - sperrgut
+                - abholung sperrmüll
+                services:
+                - Sperrmüll anmelden oder klären
+                unit_type: team
+              illegal_dumping:
+                name: Illegale Müllablagerungen
+                description: Zuständig für wilde Müllablagerungen, Verunreinigungen und ortsbezogene Meldungen zu illegal
+                  entsorgtem Abfall.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Illegale Müllablagerungen im Bereich Betriebshof, Abfall und
+                  Grünflächen. Zuständig für wilde Müllablagerungen, Verunreinigungen und ortsbezogene Meldungen zu illegal
+                  entsorgtem Abfall. Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“,
+                  „wir prüfen“ oder „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist
+                  du auf Online-Dienst, Terminservice oder persönliche Vorsprache.
+                keywords:
+                - müllablagerung
+                - wilder müll
+                - illegale müllablagerung
+                - verunreinigung
+                services:
+                - Illegale Müllablagerung melden
+                unit_type: team
+              street_lighting:
+                name: Straßenbeleuchtung
+                description: Zuständig für defekte Straßenlaternen, Beleuchtungsmängel und Störungen der öffentlichen Beleuchtung.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Straßenbeleuchtung im Bereich Betriebshof, Abfall und Grünflächen.
+                  Zuständig für defekte Straßenlaternen, Beleuchtungsmängel und Störungen der öffentlichen Beleuchtung. Sprich
+                  natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder „wir benötigen“.
+                  Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst, Terminservice
+                  oder persönliche Vorsprache.
+                keywords:
+                - straßenbeleuchtung
+                - laterne defekt
+                - lampe defekt
+                - beleuchtung
+                - straßenlaterne
+                - laterne
+                - laterne aus
+                - beleuchtung defekt
+                services:
+                - Defekte Straßenbeleuchtung melden
+                unit_type: team
+              road_damage_drainage:
+                name: Straßenschäden und Gullys
+                description: Zuständig für Schlaglöcher, Straßenschäden, verstopfte Gullys und Entwässerung im Straßenraum.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Straßenschäden und Gullys im Bereich Betriebshof, Abfall und
+                  Grünflächen. Zuständig für Schlaglöcher, Straßenschäden, verstopfte Gullys und Entwässerung im Straßenraum.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - schlagloch
+                - straßenschaden
+                - gully
+                - ablauf verstopft
+                - entwässerung straßenraum
+                services:
+                - Straßenschaden oder Schlagloch melden
+                - Verstopften Gully melden
+                unit_type: team
+              playgrounds:
+                name: Spielplätze
+                description: Zuständig für Spielplatzschäden, defekte Spielgeräte und sicherheitsrelevante Meldungen zu Spielplätzen.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Spielplätze im Bereich Betriebshof, Abfall und Grünflächen.
+                  Zuständig für Spielplatzschäden, defekte Spielgeräte und sicherheitsrelevante Meldungen zu Spielplätzen.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - spielplatz
+                - spielplatzschaden
+                - spielgerät
+                - rutsche
+                - schaukel
+                services:
+                - Spielplatzschaden melden
+                unit_type: team
+              green_maintenance:
+                name: Grünpflege und Rückschnitt
+                description: Zuständig für Grünpflege, Mäharbeiten, Rückschnitt und Pflege öffentlicher Grünflächen im Betriebshofkontext.
+                answer_role: >-
+                  Du antwortest aus der Perspektive des Teams Grünpflege und Rückschnitt im Bereich Betriebshof, Abfall und
+                  Grünflächen. Zuständig für Grünpflege, Mäharbeiten, Rückschnitt und Pflege öffentlicher Grünflächen im Betriebshofkontext.
+                  Sprich natürlich als zuständige Stelle, zum Beispiel mit Formulierungen wie „bei uns“, „wir prüfen“ oder
+                  „wir benötigen“. Sage keine verbindliche Entscheidung zu; bei formellen Vorgängen verweist du auf Online-Dienst,
+                  Terminservice oder persönliche Vorsprache.
+                keywords:
+                - grünpflege
+                - mäharbeiten
+                - rückschnitt
+                - hecke
+                - öffentliche grünfläche
+                services:
+                - Grünpflege und Mäharbeiten klären
+                unit_type: team

@@ -1,0 +1,22 @@
+# KI-Assistenzsystem für kommunale Bürgeranliegen - Abhängigkeiten
+
+# Web-Framework & UI
+streamlit
+streamlit-autorefresh
+
+# Datenverarbeitung & Analyse
+pandas
+numpy
+PyYAML
+
+# KI & Machine Learning
+openai
+ollama
+sentence-transformers==5.5.0
+transformers==4.56.1
+faiss-cpu
+
+# Utilities
+python-dotenv
+requests
+reportlab

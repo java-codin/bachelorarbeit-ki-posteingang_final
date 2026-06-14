@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# PyCharm
+.idea/
+
+# Environment variables / secrets
+.env
+*.key
+*.pem
+
+# Logs
+*.log
+logs/
+
+# Local data / sensitive data
+data/raw/
+data/private/
+data/real_cases/
+prototype/outputs/
+prototype/models/
+prototype/reports/*.pdf
+!prototype/reports/evaluation_site/
+!prototype/reports/evaluation_site/**
+
+# OS files
+.DS_Store
+Thumbs.db

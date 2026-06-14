@@ -1,0 +1,699 @@
+{
+  "BB-01_Reisepass_Beantragung": {
+    "document_id": "BB-01",
+    "title": "Reisepass beantragen",
+    "team_id": "buergerbuero",
+    "team_name": "Bürgerbüro",
+    "department": "Fachbereich Bürgerservice",
+    "email": "buergerbuero@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Beantragung eines Reisepasses im Bürgerbüro, einschließlich Voraussetzungen, Unterlagen, Terminablauf und Abgrenzung zu Personenstandsnachweisen.",
+    "topics": [
+      "Reisepass",
+      "Ausweisdokument",
+      "Termin",
+      "Unterlagen"
+    ],
+    "pdf_path": "pdf/BB-01_Reisepass_Beantragung.pdf",
+    "markdown_path": "markdown/BB-01_Reisepass_Beantragung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "BB-02_Personalausweis_Beantragung": {
+    "document_id": "BB-02",
+    "title": "Personalausweis beantragen",
+    "team_id": "buergerbuero",
+    "team_name": "Bürgerbüro",
+    "department": "Fachbereich Bürgerservice",
+    "email": "buergerbuero@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Fachinformation zur Beantragung, Erneuerung oder Ersatzbeantragung eines Personalausweises im Bürgerbüro.",
+    "topics": [
+      "Personalausweis",
+      "Ausweis",
+      "Verlust",
+      "Online-Ausweisfunktion"
+    ],
+    "pdf_path": "pdf/BB-02_Personalausweis_Beantragung.pdf",
+    "markdown_path": "markdown/BB-02_Personalausweis_Beantragung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "BB-03_Wohnsitz_Anmeldung_Ummeldung": {
+    "document_id": "BB-03",
+    "title": "Wohnsitz anmelden oder ummelden",
+    "team_id": "buergerbuero",
+    "team_name": "Bürgerbüro",
+    "department": "Fachbereich Bürgerservice",
+    "email": "buergerbuero@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Beschreibung der kommunalen Meldeverfahren bei Zuzug, Umzug innerhalb der Kommune oder Wegzug ins Ausland.",
+    "topics": [
+      "Anmeldung",
+      "Ummeldung",
+      "Meldewesen",
+      "Wohnungsgeberbestätigung"
+    ],
+    "pdf_path": "pdf/BB-03_Wohnsitz_Anmeldung_Ummeldung.pdf",
+    "markdown_path": "markdown/BB-03_Wohnsitz_Anmeldung_Ummeldung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "ST-01_Geburtsurkunde_Beantragen": {
+    "document_id": "ST-01",
+    "title": "Geburtsurkunde beantragen",
+    "team_id": "standesamt",
+    "team_name": "Standesamt",
+    "department": "Fachbereich Bürgerservice",
+    "email": "standesamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Ausstellung von Geburtsurkunden und beglaubigten Registerausdrucken durch das Standesamt.",
+    "topics": [
+      "Geburtsurkunde",
+      "Personenstand",
+      "Urkunde"
+    ],
+    "pdf_path": "pdf/ST-01_Geburtsurkunde_Beantragen.pdf",
+    "markdown_path": "markdown/ST-01_Geburtsurkunde_Beantragen.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "ST-02_Eheschliessung_Anmelden": {
+    "document_id": "ST-02",
+    "title": "Eheschließung anmelden",
+    "team_id": "standesamt",
+    "team_name": "Standesamt",
+    "department": "Fachbereich Bürgerservice",
+    "email": "standesamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Fachliche Hinweise zur Anmeldung einer Eheschließung, Prüfung der Ehevoraussetzungen und Terminabstimmung.",
+    "topics": [
+      "Eheschließung",
+      "Heirat",
+      "Ehe",
+      "Trauung"
+    ],
+    "pdf_path": "pdf/ST-02_Eheschliessung_Anmelden.pdf",
+    "markdown_path": "markdown/ST-02_Eheschliessung_Anmelden.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "ST-03_Sterbeurkunde_Beantragen": {
+    "document_id": "ST-03",
+    "title": "Sterbeurkunde beantragen",
+    "team_id": "standesamt",
+    "team_name": "Standesamt",
+    "department": "Fachbereich Bürgerservice",
+    "email": "standesamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Ausstellung einer Sterbeurkunde und zu Zuständigkeiten nach einem Sterbefall.",
+    "topics": [
+      "Sterbeurkunde",
+      "Sterbefall",
+      "Personenstand"
+    ],
+    "pdf_path": "pdf/ST-03_Sterbeurkunde_Beantragen.pdf",
+    "markdown_path": "markdown/ST-03_Sterbeurkunde_Beantragen.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "OA-01_Falschparker_Verkehrsverstoesse_Melden": {
+    "document_id": "OA-01",
+    "title": "Falschparker und Verkehrsverstöße melden",
+    "team_id": "ordnungsamt",
+    "team_name": "Ordnungsamt",
+    "department": "Fachbereich Sicherheit und Ordnung",
+    "email": "ordnungsamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Beschreibung der Meldung von Falschparkern und Behinderungen im ruhenden Verkehr an das Ordnungsamt.",
+    "topics": [
+      "Falschparker",
+      "Parken",
+      "ruhender Verkehr"
+    ],
+    "pdf_path": "pdf/OA-01_Falschparker_Verkehrsverstoesse_Melden.pdf",
+    "markdown_path": "markdown/OA-01_Falschparker_Verkehrsverstoesse_Melden.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "OA-02_Ruhestoerung_Laermbeschwerde": {
+    "document_id": "OA-02",
+    "title": "Ruhestörung und Lärmbeschwerde melden",
+    "team_id": "ordnungsamt",
+    "team_name": "Ordnungsamt",
+    "department": "Fachbereich Sicherheit und Ordnung",
+    "email": "ordnungsamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Hinweise zur Meldung von Lärm, Ruhestörungen und wiederkehrenden Belästigungen im öffentlichen oder nachbarschaftlichen Bereich.",
+    "topics": [
+      "Ruhestörung",
+      "Lärm",
+      "Beschwerde"
+    ],
+    "pdf_path": "pdf/OA-02_Ruhestoerung_Laermbeschwerde.pdf",
+    "markdown_path": "markdown/OA-02_Ruhestoerung_Laermbeschwerde.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "OA-03_Hund_Anmelden_Leinenpflicht": {
+    "document_id": "OA-03",
+    "title": "Hund anmelden und Leinenpflicht beachten",
+    "team_id": "ordnungsamt",
+    "team_name": "Ordnungsamt",
+    "department": "Fachbereich Sicherheit und Ordnung",
+    "email": "ordnungsamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur ordnungsrechtlichen Hundehaltung, Anmeldung und zu kommunalen Pflichten für Hundehalterinnen und Hundehalter.",
+    "topics": [
+      "Hund",
+      "Hundeanmeldung",
+      "Leinenpflicht",
+      "Hundehaltung"
+    ],
+    "pdf_path": "pdf/OA-03_Hund_Anmelden_Leinenpflicht.pdf",
+    "markdown_path": "markdown/OA-03_Hund_Anmelden_Leinenpflicht.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "GA-01_Gewerbeanmeldung": {
+    "document_id": "GA-01",
+    "title": "Gewerbe anmelden",
+    "team_id": "gewerbeamt",
+    "team_name": "Gewerbeamt",
+    "department": "Fachbereich Wirtschaft und Ordnung",
+    "email": "gewerbeamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Anzeige einer gewerblichen Tätigkeit bei Aufnahme eines stehenden Gewerbes.",
+    "topics": [
+      "Gewerbeanmeldung",
+      "Gewerbe",
+      "Selbstständigkeit"
+    ],
+    "pdf_path": "pdf/GA-01_Gewerbeanmeldung.pdf",
+    "markdown_path": "markdown/GA-01_Gewerbeanmeldung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "GA-02_Gaststaettenerlaubnis": {
+    "document_id": "GA-02",
+    "title": "Gaststättenerlaubnis und Imbissbetrieb",
+    "team_id": "gewerbeamt",
+    "team_name": "Gewerbeamt",
+    "department": "Fachbereich Wirtschaft und Ordnung",
+    "email": "gewerbeamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Fachinformation zu Gaststätten, Alkoholausschank, Imbissbetrieben und gewerberechtlichen Erlaubnispflichten.",
+    "topics": [
+      "Gaststätte",
+      "Imbiss",
+      "Alkoholausschank",
+      "Erlaubnis"
+    ],
+    "pdf_path": "pdf/GA-02_Gaststaettenerlaubnis.pdf",
+    "markdown_path": "markdown/GA-02_Gaststaettenerlaubnis.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "GA-03_Marktstand_Reisegewerbe": {
+    "document_id": "GA-03",
+    "title": "Marktstand und Reisegewerbe beantragen",
+    "team_id": "gewerbeamt",
+    "team_name": "Gewerbeamt",
+    "department": "Fachbereich Wirtschaft und Ordnung",
+    "email": "gewerbeamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu Marktständen, vorübergehendem Verkauf im öffentlichen Raum und Reisegewerbekarten.",
+    "topics": [
+      "Marktstand",
+      "Reisegewerbe",
+      "mobiler Verkauf"
+    ],
+    "pdf_path": "pdf/GA-03_Marktstand_Reisegewerbe.pdf",
+    "markdown_path": "markdown/GA-03_Marktstand_Reisegewerbe.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "BA-01_Bauantrag_Baugenehmigung": {
+    "document_id": "BA-01",
+    "title": "Bauantrag und Baugenehmigung",
+    "team_id": "bauamt",
+    "team_name": "Bauamt",
+    "department": "Fachbereich Bauen und Infrastruktur",
+    "email": "bauamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Beschreibung des Verfahrens für Bauanträge, Genehmigungspflichten und die baurechtliche Vorprüfung.",
+    "topics": [
+      "Bauantrag",
+      "Baugenehmigung",
+      "Bauvorhaben"
+    ],
+    "pdf_path": "pdf/BA-01_Bauantrag_Baugenehmigung.pdf",
+    "markdown_path": "markdown/BA-01_Bauantrag_Baugenehmigung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "BA-02_Bauvoranfrage": {
+    "document_id": "BA-02",
+    "title": "Bauvoranfrage stellen",
+    "team_id": "bauamt",
+    "team_name": "Bauamt",
+    "department": "Fachbereich Bauen und Infrastruktur",
+    "email": "bauamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Bauvoranfrage als Möglichkeit, einzelne baurechtliche Fragen vor einem Bauantrag zu klären.",
+    "topics": [
+      "Bauvoranfrage",
+      "Vorbescheid",
+      "Bauplanung"
+    ],
+    "pdf_path": "pdf/BA-02_Bauvoranfrage.pdf",
+    "markdown_path": "markdown/BA-02_Bauvoranfrage.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "BA-03_Strassenaufbruch_Baustelle": {
+    "document_id": "BA-03",
+    "title": "Straßenaufbruch und Baustellen im öffentlichen Raum",
+    "team_id": "bauamt",
+    "team_name": "Bauamt",
+    "department": "Fachbereich Bauen und Infrastruktur",
+    "email": "bauamt@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Fachinformation zu Genehmigungen für Arbeiten im öffentlichen Verkehrsraum, Straßenaufbrüche und Baustelleneinrichtungen.",
+    "topics": [
+      "Straßenaufbruch",
+      "Baustelle",
+      "öffentlicher Raum"
+    ],
+    "pdf_path": "pdf/BA-03_Strassenaufbruch_Baustelle.pdf",
+    "markdown_path": "markdown/BA-03_Strassenaufbruch_Baustelle.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SP-01_Bebauungsplan_Einsehen": {
+    "document_id": "SP-01",
+    "title": "Bebauungsplan einsehen und verstehen",
+    "team_id": "stadtplanung",
+    "team_name": "Stadtplanung",
+    "department": "Fachbereich Stadtentwicklung",
+    "email": "stadtplanung@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zum Zugriff auf Bebauungspläne, planungsrechtliche Festsetzungen und Auskünfte zur Grundstücksnutzung.",
+    "topics": [
+      "Bebauungsplan",
+      "Bauleitplanung",
+      "Planungsrecht"
+    ],
+    "pdf_path": "pdf/SP-01_Bebauungsplan_Einsehen.pdf",
+    "markdown_path": "markdown/SP-01_Bebauungsplan_Einsehen.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SP-02_Buergerbeteiligung_Bauleitplanung": {
+    "document_id": "SP-02",
+    "title": "Bürgerbeteiligung in der Bauleitplanung",
+    "team_id": "stadtplanung",
+    "team_name": "Stadtplanung",
+    "department": "Fachbereich Stadtentwicklung",
+    "email": "stadtplanung@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Beschreibung der Beteiligungsmöglichkeiten bei Bebauungsplänen und städtebaulichen Planverfahren.",
+    "topics": [
+      "Bürgerbeteiligung",
+      "Bauleitplanung",
+      "Stellungnahme"
+    ],
+    "pdf_path": "pdf/SP-02_Buergerbeteiligung_Bauleitplanung.pdf",
+    "markdown_path": "markdown/SP-02_Buergerbeteiligung_Bauleitplanung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SP-03_Flaechennutzungsplan_Stadtentwicklung": {
+    "document_id": "SP-03",
+    "title": "Flächennutzungsplan und Stadtentwicklung",
+    "team_id": "stadtplanung",
+    "team_name": "Stadtplanung",
+    "department": "Fachbereich Stadtentwicklung",
+    "email": "stadtplanung@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Grundlagen zur vorbereitenden Bauleitplanung, Flächenentwicklung und strategischen Stadtentwicklung.",
+    "topics": [
+      "Flächennutzungsplan",
+      "Stadtentwicklung",
+      "Flächenplanung"
+    ],
+    "pdf_path": "pdf/SP-03_Flaechennutzungsplan_Stadtentwicklung.pdf",
+    "markdown_path": "markdown/SP-03_Flaechennutzungsplan_Stadtentwicklung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SO-01_Wohngeld_Beantragen": {
+    "document_id": "SO-01",
+    "title": "Wohngeld beantragen",
+    "team_id": "soziales",
+    "team_name": "Soziales",
+    "department": "Fachbereich Soziales und Teilhabe",
+    "email": "soziales@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Beantragung von Wohngeld, erforderlichen Nachweisen und typischen Prüfschritten.",
+    "topics": [
+      "Wohngeld",
+      "Mietzuschuss",
+      "Lastenzuschuss"
+    ],
+    "pdf_path": "pdf/SO-01_Wohngeld_Beantragen.pdf",
+    "markdown_path": "markdown/SO-01_Wohngeld_Beantragen.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SO-02_Grundsicherung_Sozialhilfe": {
+    "document_id": "SO-02",
+    "title": "Grundsicherung und Sozialhilfe",
+    "team_id": "soziales",
+    "team_name": "Soziales",
+    "department": "Fachbereich Soziales und Teilhabe",
+    "email": "soziales@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Orientierung zu sozialen Hilfen, Grundsicherung, Hilfe zum Lebensunterhalt und Beratungswegen.",
+    "topics": [
+      "Grundsicherung",
+      "Sozialhilfe",
+      "Existenzsicherung"
+    ],
+    "pdf_path": "pdf/SO-02_Grundsicherung_Sozialhilfe.pdf",
+    "markdown_path": "markdown/SO-02_Grundsicherung_Sozialhilfe.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SO-03_Seniorenberatung_Teilhabe": {
+    "document_id": "SO-03",
+    "title": "Seniorenberatung und Teilhabeunterstützung",
+    "team_id": "soziales",
+    "team_name": "Soziales",
+    "department": "Fachbereich Soziales und Teilhabe",
+    "email": "soziales@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu Beratungsangeboten für ältere Menschen, Menschen mit Behinderung und Angehörige.",
+    "topics": [
+      "Seniorenberatung",
+      "Teilhabe",
+      "Behinderung",
+      "Beratung"
+    ],
+    "pdf_path": "pdf/SO-03_Seniorenberatung_Teilhabe.pdf",
+    "markdown_path": "markdown/SO-03_Seniorenberatung_Teilhabe.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "JF-01_Kitaplatz_Vormerkung": {
+    "document_id": "JF-01",
+    "title": "Kitaplatz und Vormerkung",
+    "team_id": "jugend_familie",
+    "team_name": "Jugend und Familie",
+    "department": "Fachbereich Jugend, Familie und Betreuung",
+    "email": "jugend-familie@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Vormerkung, Platzvergabe und Kommunikation rund um Kinderbetreuung in der Kommune.",
+    "topics": [
+      "Kita",
+      "Kindergarten",
+      "Betreuungsplatz"
+    ],
+    "pdf_path": "pdf/JF-01_Kitaplatz_Vormerkung.pdf",
+    "markdown_path": "markdown/JF-01_Kitaplatz_Vormerkung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "JF-02_Elternbeitraege_Kinderbetreuung": {
+    "document_id": "JF-02",
+    "title": "Elternbeiträge für Kinderbetreuung",
+    "team_id": "jugend_familie",
+    "team_name": "Jugend und Familie",
+    "department": "Fachbereich Jugend, Familie und Betreuung",
+    "email": "jugend-familie@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Hinweise zu Elternbeiträgen, Beitragsermäßigung, Einkommensnachweisen und Änderungen im Betreuungsverhältnis.",
+    "topics": [
+      "Elternbeitrag",
+      "Kinderbetreuung",
+      "Kita-Gebühren"
+    ],
+    "pdf_path": "pdf/JF-02_Elternbeitraege_Kinderbetreuung.pdf",
+    "markdown_path": "markdown/JF-02_Elternbeitraege_Kinderbetreuung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "JF-03_Ferienbetreuung": {
+    "document_id": "JF-03",
+    "title": "Ferienbetreuung für Kinder",
+    "team_id": "jugend_familie",
+    "team_name": "Jugend und Familie",
+    "department": "Fachbereich Jugend, Familie und Betreuung",
+    "email": "jugend-familie@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu kommunalen Ferienangeboten, Anmeldung, Zielgruppen und organisatorischen Rahmenbedingungen.",
+    "topics": [
+      "Ferienbetreuung",
+      "Kinderbetreuung",
+      "Ferienprogramm"
+    ],
+    "pdf_path": "pdf/JF-03_Ferienbetreuung.pdf",
+    "markdown_path": "markdown/JF-03_Ferienbetreuung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SB-01_Einschulung_Schulbezirk": {
+    "document_id": "SB-01",
+    "title": "Einschulung und Schulbezirk",
+    "team_id": "schule_bildung",
+    "team_name": "Schule und Bildung",
+    "department": "Fachbereich Bildung",
+    "email": "schule-bildung@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Einschulung, Schulbezirk, Anmeldung und Zuständigkeit des Schulträgers.",
+    "topics": [
+      "Einschulung",
+      "Schulbezirk",
+      "Grundschule"
+    ],
+    "pdf_path": "pdf/SB-01_Einschulung_Schulbezirk.pdf",
+    "markdown_path": "markdown/SB-01_Einschulung_Schulbezirk.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SB-02_Schuelerbefoerderung": {
+    "document_id": "SB-02",
+    "title": "Schülerbeförderung und Schulbus",
+    "team_id": "schule_bildung",
+    "team_name": "Schule und Bildung",
+    "department": "Fachbereich Bildung",
+    "email": "schule-bildung@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Hinweise zur Schülerbeförderung, Anspruchsprüfung, Fahrkarten und organisatorischen Problemen im Schulverkehr.",
+    "topics": [
+      "Schülerbeförderung",
+      "Schulbus",
+      "Fahrkarte"
+    ],
+    "pdf_path": "pdf/SB-02_Schuelerbefoerderung.pdf",
+    "markdown_path": "markdown/SB-02_Schuelerbefoerderung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "SB-03_Mensa_Ganztagsbetreuung": {
+    "document_id": "SB-03",
+    "title": "Mensa und Ganztagsbetreuung an Schulen",
+    "team_id": "schule_bildung",
+    "team_name": "Schule und Bildung",
+    "department": "Fachbereich Bildung",
+    "email": "schule-bildung@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu Mensa, Mittagessen, Ganztagsangeboten und organisatorischen Schulträgerfragen.",
+    "topics": [
+      "Mensa",
+      "Ganztag",
+      "Schule",
+      "Betreuung"
+    ],
+    "pdf_path": "pdf/SB-03_Mensa_Ganztagsbetreuung.pdf",
+    "markdown_path": "markdown/SB-03_Mensa_Ganztagsbetreuung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "UK-01_Baumschutz_Baumfaellung": {
+    "document_id": "UK-01",
+    "title": "Baumschutz und Baumfällung",
+    "team_id": "umwelt_klima",
+    "team_name": "Umwelt und Klima",
+    "department": "Fachbereich Umwelt",
+    "email": "umwelt-klima@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu Baumschutz, Genehmigungspflichten für Baumfällungen und Umgang mit beschädigten Bäumen.",
+    "topics": [
+      "Baumschutz",
+      "Baumfällung",
+      "Grünfläche"
+    ],
+    "pdf_path": "pdf/UK-01_Baumschutz_Baumfaellung.pdf",
+    "markdown_path": "markdown/UK-01_Baumschutz_Baumfaellung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "UK-02_Umweltbeschwerden": {
+    "document_id": "UK-02",
+    "title": "Umweltbeschwerden melden",
+    "team_id": "umwelt_klima",
+    "team_name": "Umwelt und Klima",
+    "department": "Fachbereich Umwelt",
+    "email": "umwelt-klima@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Beschreibung der Meldung von Umweltbeeinträchtigungen, Gewässerverschmutzung, Gerüchen oder sonstigen Auffälligkeiten.",
+    "topics": [
+      "Umweltbeschwerde",
+      "Gewässer",
+      "Geruch",
+      "Naturschutz"
+    ],
+    "pdf_path": "pdf/UK-02_Umweltbeschwerden.pdf",
+    "markdown_path": "markdown/UK-02_Umweltbeschwerden.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "UK-03_Gruenflaechen_Spielplaetze": {
+    "document_id": "UK-03",
+    "title": "Grünflächen und Spielplätze melden",
+    "team_id": "umwelt_klima",
+    "team_name": "Umwelt und Klima",
+    "department": "Fachbereich Umwelt",
+    "email": "umwelt-klima@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu Anliegen rund um kommunale Grünflächen, Spielplätze, Pflegezustand und Sicherheitsmängel.",
+    "topics": [
+      "Grünfläche",
+      "Spielplatz",
+      "Pflege",
+      "Sicherheit"
+    ],
+    "pdf_path": "pdf/UK-03_Gruenflaechen_Spielplaetze.pdf",
+    "markdown_path": "markdown/UK-03_Gruenflaechen_Spielplaetze.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "FS-01_Grundsteuer": {
+    "document_id": "FS-01",
+    "title": "Grundsteuer und Grundbesitzabgaben",
+    "team_id": "finanzen_steuern",
+    "team_name": "Finanzen und Steuern",
+    "department": "Fachbereich Finanzen",
+    "email": "finanzen-steuern@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu Grundsteuer, Bescheiden, Kassenzeichen und typischen Rückfragen zu kommunalen Abgaben.",
+    "topics": [
+      "Grundsteuer",
+      "Abgaben",
+      "Kassenzeichen"
+    ],
+    "pdf_path": "pdf/FS-01_Grundsteuer.pdf",
+    "markdown_path": "markdown/FS-01_Grundsteuer.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "FS-02_Hundesteuer": {
+    "document_id": "FS-02",
+    "title": "Hundesteuer und Steuerbescheid",
+    "team_id": "finanzen_steuern",
+    "team_name": "Finanzen und Steuern",
+    "department": "Fachbereich Finanzen",
+    "email": "finanzen-steuern@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zur Hundesteuer, Steuerpflicht, Bescheidfragen und Abgrenzung zur ordnungsrechtlichen Hundeanmeldung.",
+    "topics": [
+      "Hundesteuer",
+      "Steuerbescheid",
+      "Hund"
+    ],
+    "pdf_path": "pdf/FS-02_Hundesteuer.pdf",
+    "markdown_path": "markdown/FS-02_Hundesteuer.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "FS-03_Gebuehrenbescheid_Mahnung": {
+    "document_id": "FS-03",
+    "title": "Gebührenbescheid, Mahnung und Zahlung",
+    "team_id": "finanzen_steuern",
+    "team_name": "Finanzen und Steuern",
+    "department": "Fachbereich Finanzen",
+    "email": "finanzen-steuern@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Fachinformation zu kommunalen Gebührenbescheiden, Zahlungswegen, Mahnungen und Klärung von Kassenzeichen.",
+    "topics": [
+      "Gebührenbescheid",
+      "Mahnung",
+      "Zahlung",
+      "SEPA"
+    ],
+    "pdf_path": "pdf/FS-03_Gebuehrenbescheid_Mahnung.pdf",
+    "markdown_path": "markdown/FS-03_Gebuehrenbescheid_Mahnung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "AB-01_Sperrmuell_Abfallentsorgung": {
+    "document_id": "AB-01",
+    "title": "Sperrmüll und Abfallentsorgung",
+    "team_id": "abfall_bauhof",
+    "team_name": "Abfall und Bauhof",
+    "department": "Fachbereich Infrastruktur und Betriebshof",
+    "email": "abfall-bauhof@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu Sperrmüll, Abfallbehältern, Abfuhrterminen und typischen Entsorgungsfragen.",
+    "topics": [
+      "Sperrmüll",
+      "Abfall",
+      "Mülltonne",
+      "Abfuhr"
+    ],
+    "pdf_path": "pdf/AB-01_Sperrmuell_Abfallentsorgung.pdf",
+    "markdown_path": "markdown/AB-01_Sperrmuell_Abfallentsorgung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "AB-02_Illegale_Muellablagerung": {
+    "document_id": "AB-02",
+    "title": "Illegale Müllablagerung melden",
+    "team_id": "abfall_bauhof",
+    "team_name": "Abfall und Bauhof",
+    "department": "Fachbereich Infrastruktur und Betriebshof",
+    "email": "abfall-bauhof@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Beschreibung der Meldung wilder Müllablagerungen im öffentlichen Raum und Zuständigkeitsabgrenzung.",
+    "topics": [
+      "illegale Müllablagerung",
+      "wilder Müll",
+      "Mängelmeldung"
+    ],
+    "pdf_path": "pdf/AB-02_Illegale_Muellablagerung.pdf",
+    "markdown_path": "markdown/AB-02_Illegale_Muellablagerung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  },
+  "AB-03_Winterdienst_Strassenreinigung": {
+    "document_id": "AB-03",
+    "title": "Winterdienst und Straßenreinigung",
+    "team_id": "abfall_bauhof",
+    "team_name": "Abfall und Bauhof",
+    "department": "Fachbereich Infrastruktur und Betriebshof",
+    "email": "abfall-bauhof@kommune.test",
+    "validity": "Beispielkommune Musterstadt, Stand 2026. Dieses Dokument ist fiktiv und dient ausschließlich der Prototyp- und Demonstrationsnutzung.",
+    "summary": "Informationen zu kommunalem Winterdienst, Räumpflichten, Straßenreinigung und Meldung von Problemen.",
+    "topics": [
+      "Winterdienst",
+      "Straßenreinigung",
+      "Räumen",
+      "Streuen"
+    ],
+    "pdf_path": "pdf/AB-03_Winterdienst_Strassenreinigung.pdf",
+    "markdown_path": "markdown/AB-03_Winterdienst_Strassenreinigung.md",
+    "risk_level": "low",
+    "document_type": "service_information"
+  }
+}

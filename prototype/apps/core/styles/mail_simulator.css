@@ -1,0 +1,9 @@
+:root {
+    --app-accent: #0f766e;
+    --app-accent-dark: #115e59;
+    --app-accent-soft: #ecfdf5;
+}
+
+[data-testid="stTextArea"] textarea {
+    line-height: 1.5;
+}

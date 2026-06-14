@@ -1,0 +1,6 @@
+case_id,text,ground_truth_team
+1,"""Ich brauche einen neuen Personalausweis.""",buergerbuero
+2,"""Vor meinem Haus parkt ständig jemand im Halteverbot.""",ordnungsamt
+3,"""Ich möchte eine Geburtsurkunde beantragen.""",standesamt
+4,"""Welche Unterlagen brauche ich für die Ummeldung?""",buergerbuero
+5,"""Was muss ich tun um meinen Hund anzumelden?""",ordnungsamt

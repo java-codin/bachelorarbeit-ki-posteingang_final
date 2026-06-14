@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-06-14T11:05:33",
+  "input": "curated evaluation outputs",
+  "input_mode": "combined_runs",
+  "input_runs": [
+    "20260610_171900_local_baseline_v1",
+    "20260610_172930_local_baseline_v2",
+    "20260610_180414_openai_baseline_v1",
+    "20260610_183725_local_baseline_v3",
+    "20260610_192952_openai_baseline_v2",
+    "20260610_195658_openai_baseline_v3",
+    "20260610_202217_openai_baseline_v4",
+    "20260610_215453_local_baseline_v4",
+    "20260611_222922_openai_baseline_v5",
+    "20260614_092901_local_baseline_v5"
+  ],
+  "output": "prototype/reports/evaluation_site",
+  "template": "not included in public repository",
+  "data_files": {
+    "metrics_by_version": "data/metrics_by_version.csv",
+    "metrics_by_category": "data/metrics_by_version_and_category.csv",
+    "case_results_sanitized": "data/case_results_sanitized.csv",
+    "metrics_by_profile": "data/metrics_by_model_profile.csv",
+    "metrics_by_version_profile": "data/metrics_by_version_and_model_profile.csv",
+    "evaluation_cases_full": "data/evaluation_cases_full.csv",
+    "chunking_summary": "data/chunking_summary.csv"
+  },
+  "contains_full_test_cases": true,
+  "contains_raw_text": true,
+  "contains_draft_answers": false
+}

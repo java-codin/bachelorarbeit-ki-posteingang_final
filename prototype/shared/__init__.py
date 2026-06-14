@@ -1,0 +1,3 @@
+"""
+Geteilte Infrastrukturmodule des Prototyps.
+"""

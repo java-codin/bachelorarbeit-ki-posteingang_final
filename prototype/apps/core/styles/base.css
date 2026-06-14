@@ -1,0 +1,110 @@
+:root {
+    --app-accent: #2563eb;
+    --app-accent-dark: #1d4ed8;
+    --app-accent-soft: #eff6ff;
+    --app-border-soft: rgba(148, 163, 184, 0.32);
+    --app-radius: 8px;
+}
+
+[data-testid="stAppViewContainer"] > .main .block-container {
+    max-width: 1440px;
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+}
+
+[data-testid="stSidebar"] {
+    border-right: 1px solid var(--app-border-soft);
+}
+
+h1 {
+    letter-spacing: 0;
+    margin-bottom: 0.2rem;
+}
+
+h2,
+h3 {
+    letter-spacing: 0;
+}
+
+.stCaptionContainer,
+[data-testid="stCaptionContainer"] {
+    opacity: 0.82;
+}
+
+[data-testid="stMetric"] {
+    min-height: 5.2rem;
+    padding: 0.85rem 0.95rem;
+    border: 1px solid var(--app-border-soft);
+    border-radius: var(--app-radius);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+[data-testid="stMetricLabel"] {
+    opacity: 0.82;
+}
+
+[data-testid="stMetricValue"] {
+    font-size: 1.35rem;
+}
+
+.stButton > button,
+.stLinkButton > a,
+[data-testid="stFormSubmitButton"] button {
+    border-radius: var(--app-radius);
+    font-weight: 650;
+}
+
+.stButton > button[kind="primary"],
+[data-testid="stFormSubmitButton"] button[kind="primary"] {
+    background: var(--app-accent);
+    border-color: var(--app-accent);
+}
+
+.stButton > button[kind="primary"]:hover,
+[data-testid="stFormSubmitButton"] button[kind="primary"]:hover {
+    background: var(--app-accent-dark);
+    border-color: var(--app-accent-dark);
+}
+
+[data-testid="stTabs"] [role="tablist"] {
+    gap: 0.25rem;
+    border-bottom: 1px solid var(--app-border-soft);
+}
+
+[data-testid="stTabs"] [role="tab"] {
+    padding: 0.55rem 0.8rem;
+    border-radius: var(--app-radius) var(--app-radius) 0 0;
+}
+
+[data-testid="stTabs"] [aria-selected="true"] {
+    color: var(--app-accent);
+    background: color-mix(in srgb, var(--app-accent-soft) 55%, transparent);
+}
+
+[data-testid="stDataFrame"],
+[data-testid="stTable"] {
+    border: 1px solid var(--app-border-soft);
+    border-radius: var(--app-radius);
+    overflow: hidden;
+}
+
+[data-testid="stExpander"] {
+    border: 1px solid var(--app-border-soft);
+    border-radius: var(--app-radius);
+}
+
+div[data-baseweb="select"] > div,
+textarea,
+input {
+    border-radius: var(--app-radius);
+}
+
+[data-testid="stAlert"] {
+    border-radius: var(--app-radius);
+    border: 1px solid var(--app-border-soft);
+}
+
+code,
+pre {
+    border-radius: var(--app-radius);
+}

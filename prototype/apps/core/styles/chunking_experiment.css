@@ -1,0 +1,115 @@
+:root {
+    --chunking-border: rgba(148, 163, 184, 0.38);
+    --chunking-muted: rgba(100, 116, 139, 0.92);
+    --chunking-radius: 8px;
+}
+
+.chunking-note {
+    color: var(--chunking-muted);
+    font-size: 0.92rem;
+    line-height: 1.35;
+}
+
+.path-box {
+    background: color-mix(in srgb, var(--secondary-background-color) 92%, transparent);
+    border: 1px solid var(--chunking-border);
+    border-radius: var(--chunking-radius);
+    color: var(--text-color);
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.82rem;
+    margin-bottom: 0.45rem;
+    overflow-wrap: anywhere;
+    padding: 0.65rem 0.8rem;
+}
+
+.experiment-plan,
+.last-run-overview {
+    background: color-mix(in srgb, var(--secondary-background-color) 94%, transparent);
+    border: 1px solid var(--chunking-border);
+    border-radius: var(--chunking-radius);
+    margin: 0.75rem 0 1rem;
+    padding: 0.75rem 0.85rem;
+}
+
+.experiment-plan strong,
+.experiment-plan span {
+    display: block;
+}
+
+.experiment-plan strong {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.experiment-plan span {
+    color: var(--chunking-muted);
+    font-size: 0.82rem;
+    line-height: 1.35;
+}
+
+.last-run-overview {
+    display: grid;
+    gap: 0.65rem;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+
+.last-run-overview div {
+    min-width: 0;
+}
+
+.last-run-overview span,
+.last-run-overview strong {
+    display: block;
+}
+
+.last-run-overview span {
+    color: var(--chunking-muted);
+    font-size: 0.76rem;
+    margin-bottom: 0.15rem;
+}
+
+.last-run-overview strong {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.experiment-log {
+    background: var(--secondary-background-color);
+    border: 1px solid var(--chunking-border);
+    border-radius: var(--chunking-radius);
+    color: var(--text-color);
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 0.82rem;
+    height: 26rem;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 0.8rem 0.9rem;
+    white-space: pre-wrap;
+}
+
+div[data-baseweb="select"] > div,
+[data-testid="stNumberInput"] input,
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {
+    background-color: var(--secondary-background-color);
+    border-color: var(--chunking-border);
+    color: var(--text-color);
+}
+
+div[data-baseweb="select"] span,
+[data-testid="stNumberInput"] input,
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {
+    color: var(--text-color);
+}
+
+div[data-baseweb="tag"] {
+    background-color: color-mix(in srgb, var(--primary-color) 18%, var(--secondary-background-color));
+    color: var(--text-color);
+}
+
+[data-testid="stMetricValue"] {
+    font-size: 1.35rem;
+}

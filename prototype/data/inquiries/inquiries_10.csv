@@ -1,0 +1,11 @@
+case_id,text,ground_truth_team
+1,"""Ich möchte einen neuen Reisepass beantragen. Welche Unterlagen benötige ich?""",buergerbuero
+2,"""Vor unserer Schule wird regelmäßig falsch geparkt. Können Sie das kontrollieren?""",ordnungsamt
+3,"""Ich brauche eine beglaubigte Abschrift meiner Geburtsurkunde.""",standesamt
+4,"""Wie kann ich meinen Wohnsitz nach einem Umzug ummelden?""",buergerbuero
+5,"""Mein Hund muss angemeldet werden. Wie funktioniert das?""",ordnungsamt
+6,"""Ich möchte die Eheschließung anmelden. Welche Dokumente werden benötigt?""",standesamt
+7,"""Mein Personalausweis ist abgelaufen. Kann ich online einen Termin vereinbaren?""",buergerbuero
+8,"""In unserer Straße wurde illegal Müll abgeladen.""",ordnungsamt
+9,"""Ich benötige eine Sterbeurkunde für eine Behörde.""",standesamt
+10,"""Ich habe meinen Ausweis verloren und möchte ihn sperren lassen.""",buergerbuero

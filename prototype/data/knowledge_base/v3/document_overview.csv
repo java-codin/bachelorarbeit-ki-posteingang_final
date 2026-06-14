@@ -1,0 +1,37 @@
+document_id,title,team_id,team_name,pdf,markdown,topics
+BB-01,Reisepass beantragen,buergerbuero,Bürgerbüro,pdf/BB-01_Reisepass_Beantragung.pdf,markdown/BB-01_Reisepass_Beantragung.md,Reisepass; Ausweisdokument; Termin; Unterlagen
+BB-02,Personalausweis beantragen,buergerbuero,Bürgerbüro,pdf/BB-02_Personalausweis_Beantragung.pdf,markdown/BB-02_Personalausweis_Beantragung.md,Personalausweis; Ausweis; Verlust; Online-Ausweisfunktion
+BB-03,Wohnsitz anmelden oder ummelden,buergerbuero,Bürgerbüro,pdf/BB-03_Wohnsitz_Anmeldung_Ummeldung.pdf,markdown/BB-03_Wohnsitz_Anmeldung_Ummeldung.md,Anmeldung; Ummeldung; Meldewesen; Wohnungsgeberbestätigung
+ST-01,Geburtsurkunde beantragen,standesamt,Standesamt,pdf/ST-01_Geburtsurkunde_Beantragen.pdf,markdown/ST-01_Geburtsurkunde_Beantragen.md,Geburtsurkunde; Personenstand; Urkunde
+ST-02,Eheschließung anmelden,standesamt,Standesamt,pdf/ST-02_Eheschliessung_Anmelden.pdf,markdown/ST-02_Eheschliessung_Anmelden.md,Eheschließung; Heirat; Ehe; Trauung
+ST-03,Sterbeurkunde beantragen,standesamt,Standesamt,pdf/ST-03_Sterbeurkunde_Beantragen.pdf,markdown/ST-03_Sterbeurkunde_Beantragen.md,Sterbeurkunde; Sterbefall; Personenstand
+OA-01,Falschparker und Verkehrsverstöße melden,ordnungsamt,Ordnungsamt,pdf/OA-01_Falschparker_Verkehrsverstoesse_Melden.pdf,markdown/OA-01_Falschparker_Verkehrsverstoesse_Melden.md,Falschparker; Parken; ruhender Verkehr
+OA-02,Ruhestörung und Lärmbeschwerde melden,ordnungsamt,Ordnungsamt,pdf/OA-02_Ruhestoerung_Laermbeschwerde.pdf,markdown/OA-02_Ruhestoerung_Laermbeschwerde.md,Ruhestörung; Lärm; Beschwerde
+OA-03,Hund anmelden und Leinenpflicht beachten,ordnungsamt,Ordnungsamt,pdf/OA-03_Hund_Anmelden_Leinenpflicht.pdf,markdown/OA-03_Hund_Anmelden_Leinenpflicht.md,Hund; Hundeanmeldung; Leinenpflicht; Hundehaltung
+GA-01,Gewerbe anmelden,gewerbeamt,Gewerbeamt,pdf/GA-01_Gewerbeanmeldung.pdf,markdown/GA-01_Gewerbeanmeldung.md,Gewerbeanmeldung; Gewerbe; Selbstständigkeit
+GA-02,Gaststättenerlaubnis und Imbissbetrieb,gewerbeamt,Gewerbeamt,pdf/GA-02_Gaststaettenerlaubnis.pdf,markdown/GA-02_Gaststaettenerlaubnis.md,Gaststätte; Imbiss; Alkoholausschank; Erlaubnis
+GA-03,Marktstand und Reisegewerbe beantragen,gewerbeamt,Gewerbeamt,pdf/GA-03_Marktstand_Reisegewerbe.pdf,markdown/GA-03_Marktstand_Reisegewerbe.md,Marktstand; Reisegewerbe; mobiler Verkauf
+BA-01,Bauantrag und Baugenehmigung,bauamt,Bauamt,pdf/BA-01_Bauantrag_Baugenehmigung.pdf,markdown/BA-01_Bauantrag_Baugenehmigung.md,Bauantrag; Baugenehmigung; Bauvorhaben
+BA-02,Bauvoranfrage stellen,bauamt,Bauamt,pdf/BA-02_Bauvoranfrage.pdf,markdown/BA-02_Bauvoranfrage.md,Bauvoranfrage; Vorbescheid; Bauplanung
+BA-03,Straßenaufbruch und Baustellen im öffentlichen Raum,bauamt,Bauamt,pdf/BA-03_Strassenaufbruch_Baustelle.pdf,markdown/BA-03_Strassenaufbruch_Baustelle.md,Straßenaufbruch; Baustelle; öffentlicher Raum
+SP-01,Bebauungsplan einsehen und verstehen,stadtplanung,Stadtplanung,pdf/SP-01_Bebauungsplan_Einsehen.pdf,markdown/SP-01_Bebauungsplan_Einsehen.md,Bebauungsplan; Bauleitplanung; Planungsrecht
+SP-02,Bürgerbeteiligung in der Bauleitplanung,stadtplanung,Stadtplanung,pdf/SP-02_Buergerbeteiligung_Bauleitplanung.pdf,markdown/SP-02_Buergerbeteiligung_Bauleitplanung.md,Bürgerbeteiligung; Bauleitplanung; Stellungnahme
+SP-03,Flächennutzungsplan und Stadtentwicklung,stadtplanung,Stadtplanung,pdf/SP-03_Flaechennutzungsplan_Stadtentwicklung.pdf,markdown/SP-03_Flaechennutzungsplan_Stadtentwicklung.md,Flächennutzungsplan; Stadtentwicklung; Flächenplanung
+SO-01,Wohngeld beantragen,soziales,Soziales,pdf/SO-01_Wohngeld_Beantragen.pdf,markdown/SO-01_Wohngeld_Beantragen.md,Wohngeld; Mietzuschuss; Lastenzuschuss
+SO-02,Grundsicherung und Sozialhilfe,soziales,Soziales,pdf/SO-02_Grundsicherung_Sozialhilfe.pdf,markdown/SO-02_Grundsicherung_Sozialhilfe.md,Grundsicherung; Sozialhilfe; Existenzsicherung
+SO-03,Seniorenberatung und Teilhabeunterstützung,soziales,Soziales,pdf/SO-03_Seniorenberatung_Teilhabe.pdf,markdown/SO-03_Seniorenberatung_Teilhabe.md,Seniorenberatung; Teilhabe; Behinderung; Beratung
+JF-01,Kitaplatz und Vormerkung,jugend_familie,Jugend und Familie,pdf/JF-01_Kitaplatz_Vormerkung.pdf,markdown/JF-01_Kitaplatz_Vormerkung.md,Kita; Kindergarten; Betreuungsplatz
+JF-02,Elternbeiträge für Kinderbetreuung,jugend_familie,Jugend und Familie,pdf/JF-02_Elternbeitraege_Kinderbetreuung.pdf,markdown/JF-02_Elternbeitraege_Kinderbetreuung.md,Elternbeitrag; Kinderbetreuung; Kita-Gebühren
+JF-03,Ferienbetreuung für Kinder,jugend_familie,Jugend und Familie,pdf/JF-03_Ferienbetreuung.pdf,markdown/JF-03_Ferienbetreuung.md,Ferienbetreuung; Kinderbetreuung; Ferienprogramm
+SB-01,Einschulung und Schulbezirk,schule_bildung,Schule und Bildung,pdf/SB-01_Einschulung_Schulbezirk.pdf,markdown/SB-01_Einschulung_Schulbezirk.md,Einschulung; Schulbezirk; Grundschule
+SB-02,Schülerbeförderung und Schulbus,schule_bildung,Schule und Bildung,pdf/SB-02_Schuelerbefoerderung.pdf,markdown/SB-02_Schuelerbefoerderung.md,Schülerbeförderung; Schulbus; Fahrkarte
+SB-03,Mensa und Ganztagsbetreuung an Schulen,schule_bildung,Schule und Bildung,pdf/SB-03_Mensa_Ganztagsbetreuung.pdf,markdown/SB-03_Mensa_Ganztagsbetreuung.md,Mensa; Ganztag; Schule; Betreuung
+UK-01,Baumschutz und Baumfällung,umwelt_klima,Umwelt und Klima,pdf/UK-01_Baumschutz_Baumfaellung.pdf,markdown/UK-01_Baumschutz_Baumfaellung.md,Baumschutz; Baumfällung; Grünfläche
+UK-02,Umweltbeschwerden melden,umwelt_klima,Umwelt und Klima,pdf/UK-02_Umweltbeschwerden.pdf,markdown/UK-02_Umweltbeschwerden.md,Umweltbeschwerde; Gewässer; Geruch; Naturschutz
+UK-03,Grünflächen und Spielplätze melden,umwelt_klima,Umwelt und Klima,pdf/UK-03_Gruenflaechen_Spielplaetze.pdf,markdown/UK-03_Gruenflaechen_Spielplaetze.md,Grünfläche; Spielplatz; Pflege; Sicherheit
+FS-01,Grundsteuer und Grundbesitzabgaben,finanzen_steuern,Finanzen und Steuern,pdf/FS-01_Grundsteuer.pdf,markdown/FS-01_Grundsteuer.md,Grundsteuer; Abgaben; Kassenzeichen
+FS-02,Hundesteuer und Steuerbescheid,finanzen_steuern,Finanzen und Steuern,pdf/FS-02_Hundesteuer.pdf,markdown/FS-02_Hundesteuer.md,Hundesteuer; Steuerbescheid; Hund
+FS-03,"Gebührenbescheid, Mahnung und Zahlung",finanzen_steuern,Finanzen und Steuern,pdf/FS-03_Gebuehrenbescheid_Mahnung.pdf,markdown/FS-03_Gebuehrenbescheid_Mahnung.md,Gebührenbescheid; Mahnung; Zahlung; SEPA
+AB-01,Sperrmüll und Abfallentsorgung,abfall_bauhof,Abfall und Bauhof,pdf/AB-01_Sperrmuell_Abfallentsorgung.pdf,markdown/AB-01_Sperrmuell_Abfallentsorgung.md,Sperrmüll; Abfall; Mülltonne; Abfuhr
+AB-02,Illegale Müllablagerung melden,abfall_bauhof,Abfall und Bauhof,pdf/AB-02_Illegale_Muellablagerung.pdf,markdown/AB-02_Illegale_Muellablagerung.md,illegale Müllablagerung; wilder Müll; Mängelmeldung
+AB-03,Winterdienst und Straßenreinigung,abfall_bauhof,Abfall und Bauhof,pdf/AB-03_Winterdienst_Strassenreinigung.pdf,markdown/AB-03_Winterdienst_Strassenreinigung.md,Winterdienst; Straßenreinigung; Räumen; Streuen

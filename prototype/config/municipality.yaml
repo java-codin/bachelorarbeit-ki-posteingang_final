@@ -1,0 +1,348 @@
+# Diese Datei beschreibt die einfache Organisationskonfiguration der früheren
+# Pipeline-Versionen. Sie bildet die Kommune als flache Liste fachlicher Teams ab
+# und dient als konfigurierbare Alternative zu hart codierten Zuständigkeiten im
+# Python-Code.
+#
+# Funktionsweise:
+# - Jeder Schlüssel unter `teams` ist eine stabile technische Team-ID. Diese ID
+#   wird in Pipeline-Ergebnissen, Evaluationen und Weiterleitungslogik verwendet.
+# - `name`, `department` und `email` beschreiben die sichtbare Organisationseinheit
+#   und das simulierte Weiterleitungsziel.
+# - `description`, `keywords` und `services` liefern dem Klassifikator fachliche
+#   Signale für die Zuordnung eines Bürgeranliegens.
+# - `answer_role` steuert den Ton und die fachliche Perspektive des Antwortentwurfs.
+#   Der Text begrenzt die Antwort auf die jeweilige Zuständigkeit und verhindert,
+#   dass ein Team Entscheidungen anderer Fachbereiche vorwegnimmt.
+# - Änderungen an Zuständigkeiten, Begriffen oder E-Mail-Zielen sollen hier
+#   gepflegt werden, damit die Pipeline ohne Codeänderung anpassbar bleibt.
+teams:
+  buergerbuero:
+    name: Bürgerbüro
+    department: Fachbereich Bürgerservice
+    email: buergerbuero@kommune.test
+    description: Zuständig für Meldeangelegenheiten, Ausweisdokumente und allgemeine Bürgerdienste.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Bürgerbüro. Du bist
+      zuständig für Meldeangelegenheiten, Ausweisdokumente und allgemeine
+      Bürgerdienste. Sprich aus unserer Perspektive im Bürgerbüro, zum Beispiel
+      "bei uns im Bürgerbüro" oder "wir benötigen". Formuliere praktisch,
+      serviceorientiert und mit klarem Hinweis auf Online-, Termin- oder Vorsprachewege, ohne Entscheidungen
+      anderer Fachbereiche vorwegzunehmen.
+    keywords:
+      - personalausweis
+      - reisepass
+      - kinderreisepass
+      - anmeldung
+      - ummeldung
+      - abmeldung
+      - meldebescheinigung
+      - führungszeugnis
+      - beglaubigung
+    services:
+      - Personalausweis beantragen
+      - Reisepass beantragen
+      - Wohnsitz anmelden
+      - Wohnsitz ummelden
+      - Führungszeugnis beantragen
+      - Meldebescheinigung beantragen
+
+  standesamt:
+    name: Standesamt
+    department: Fachbereich Bürgerservice
+    email: standesamt@kommune.test
+    description: Zuständig für Personenstandsfälle, Eheschließungen und Urkunden.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Standesamt. Du bist
+      zuständig für Urkunden, Personenstandsfälle, Eheschließungen, Geburten
+      und Sterbefälle. Sprich aus unserer Perspektive im Standesamt, zum Beispiel
+      "bei uns im Standesamt" oder "wir benötigen". Formuliere sorgfältig und verbindlich im Ton, frage nur
+      notwendige Angaben nach und vermeide Aussagen zu fachfremden Leistungen.
+    keywords:
+      - geburt
+      - geburtsurkunde
+      - heirat
+      - eheschließung
+      - eheurkunde
+      - sterbefall
+      - sterbeurkunde
+      - namensänderung
+    services:
+      - Geburt beurkunden
+      - Eheschließung anmelden
+      - Sterbefall beurkunden
+      - Geburtsurkunde beantragen
+      - Eheurkunde beantragen
+      - Sterbeurkunde beantragen
+
+  ordnungsamt:
+    name: Ordnungsamt
+    department: Fachbereich Sicherheit und Ordnung
+    email: ordnungsamt@kommune.test
+    description: Zuständig für öffentliche Sicherheit, Ordnung, ruhenden Verkehr und ordnungsrechtliche Anliegen.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Ordnungsamt. Du bist
+      zuständig für öffentliche Sicherheit, Ordnung, ruhenden Verkehr,
+      Ruhestörungen, Fundsachen und ordnungsrechtliche Meldungen. Sprich aus unserer
+      Perspektive im Ordnungsamt, zum Beispiel "wir prüfen Ihre Meldung". Formuliere
+      klar, sachlich und handlungsorientiert, ohne konkrete Maßnahmen oder
+      Sanktionen zu versprechen, die erst geprüft werden müssen.
+    keywords:
+      - falschparker
+      - parken
+      - ruhestörung
+      - lärm
+      - hund
+      - fundbüro
+      - sondergenehmigung
+      - ordnungswidrigkeit
+      - wilde müllablagerung
+    services:
+      - Falschparker melden
+      - Ruhestörung melden
+      - Hund anmelden
+      - Fundsache melden
+      - Sondernutzung beantragen
+
+  gewerbeamt:
+    name: Gewerbeamt
+    department: Fachbereich Wirtschaft und Ordnung
+    email: gewerbeamt@kommune.test
+    description: Zuständig für Gewerbeanzeigen, Gaststätten und gewerberechtliche Erlaubnisse.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Gewerbeamt. Du bist
+      zuständig für Gewerbeanzeigen, Gaststätten, Märkte und gewerberechtliche
+      Erlaubnisse. Sprich aus unserer Perspektive im Gewerbeamt, zum Beispiel
+      "bei uns im Gewerbeamt" oder "wir benötigen". Formuliere verfahrensorientiert, nenne erforderliche Angaben
+      und weise bei Antragsleistungen klar auf den formellen Antragsweg hin.
+    keywords:
+      - gewerbe
+      - gewerbeanmeldung
+      - gewerbeummeldung
+      - gewerbeabmeldung
+      - gaststätte
+      - imbiss
+      - marktstand
+      - reisegewerbe
+    services:
+      - Gewerbe anmelden
+      - Gewerbe ummelden
+      - Gewerbe abmelden
+      - Gaststättenerlaubnis beantragen
+      - Reisegewerbekarte beantragen
+
+  bauamt:
+    name: Bauamt
+    department: Fachbereich Bauen und Infrastruktur
+    email: bauamt@kommune.test
+    description: Zuständig für Bauanträge, Bauvoranfragen und bauliche Maßnahmen.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Bauamt. Du bist zuständig
+      für Bauanträge, Bauvoranfragen, Nutzungsänderungen und bauliche
+      Maßnahmen. Sprich aus unserer Perspektive im Bauamt, zum Beispiel "bei uns im
+      Bauamt", "wir prüfen" oder "für eine erste Einschätzung benötigen wir".
+      Formuliere prüfend und vorsichtig, da baurechtliche
+      Einschätzungen vom Einzelfall abhängen, und nenne konkrete nächste
+      Schritte nur, wenn sie durch den Kontext gedeckt sind.
+    keywords:
+      - baugenehmigung
+      - bauantrag
+      - bauvoranfrage
+      - garage
+      - carport
+      - anbau
+      - nutzungsänderung
+      - straßenaufbruch
+    services:
+      - Bauantrag einreichen
+      - Bauvoranfrage stellen
+      - Nutzungsänderung beantragen
+      - Straßenaufbruch genehmigen
+
+  stadtplanung:
+    name: Stadtplanung
+    department: Fachbereich Stadtentwicklung
+    email: stadtplanung@kommune.test
+    description: Zuständig für Bebauungspläne, Stadtentwicklung und Bürgerbeteiligung.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person in der Stadtplanung. Du bist
+      zuständig für Bebauungspläne, Bauleitplanung, Stadtentwicklung,
+      Auslegungen und Beteiligungsverfahren. Sprich aus unserer Perspektive in der
+      Stadtplanung, zum Beispiel "wir informieren" oder "bei uns in der Stadtplanung".
+      Formuliere informierend und
+      beteiligungsorientiert, ohne bauordnungsrechtliche Einzelfallentscheidungen
+      des Bauamts zu übernehmen.
+    keywords:
+      - bebauungsplan
+      - flächennutzungsplan
+      - bauleitplanung
+      - stadtentwicklung
+      - beteiligung
+      - auslegung
+    services:
+      - Bebauungsplan einsehen
+      - Stellungnahme zur Bauleitplanung abgeben
+      - Informationen zur Stadtentwicklung erhalten
+
+  soziales:
+    name: Soziales
+    department: Fachbereich Soziales und Teilhabe
+    email: soziales@kommune.test
+    description: Zuständig für soziale Leistungen und Beratungsangebote.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Fachbereich Soziales. Du
+      bist zuständig für soziale Leistungen, Beratungsangebote, Wohngeld,
+      Grundsicherung und Teilhabeanliegen. Sprich aus unserer Perspektive im
+      Fachbereich Soziales, zum Beispiel "wir beraten" oder "wir benötigen".
+      Formuliere empathisch, niedrigschwellig
+      und datensparsam; weise bei Leistungsanträgen auf den formellen Antragsweg
+      und notwendige Nachweise hin.
+    keywords:
+      - wohngeld
+      - sozialhilfe
+      - grundsicherung
+      - senioren
+      - behinderung
+      - teilhabe
+      - hilfe zum lebensunterhalt
+    services:
+      - Wohngeld beantragen
+      - Sozialhilfe beantragen
+      - Grundsicherung erfragen
+      - Seniorenberatung anfragen
+
+  jugend_familie:
+    name: Jugend und Familie
+    department: Fachbereich Jugend, Familie und Betreuung
+    email: jugend-familie@kommune.test
+    description: Zuständig für Kinderbetreuung, Elternbeiträge und familienbezogene Anliegen.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Fachbereich Jugend und
+      Familie. Du bist zuständig für Kinderbetreuung, Elternbeiträge,
+      Betreuungsplätze und familienbezogene Beratung. Sprich aus unserer Perspektive
+      im Fachbereich Jugend und Familie, zum Beispiel "wir prüfen" oder "wir benötigen".
+      Formuliere verständlich,
+      unterstützend und mit Blick auf Fristen, Nachweise und zuständige Stellen,
+      soweit diese im Kontext genannt sind.
+    keywords:
+      - kita
+      - kindergarten
+      - kindertagesstätte
+      - elternbeitrag
+      - betreuungsplatz
+      - jugendhilfe
+      - ferienbetreuung
+    services:
+      - Kitaplatz anfragen
+      - Elternbeitrag klären
+      - Ferienbetreuung anfragen
+      - Jugendhilfeberatung anfragen
+
+  schule_bildung:
+    name: Schule und Bildung
+    department: Fachbereich Bildung
+    email: schule-bildung@kommune.test
+    description: Zuständig für Schulträgeraufgaben, Schülerbeförderung und schulische Infrastruktur.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Fachbereich Schule und
+      Bildung. Du bist zuständig für Schulträgerangelegenheiten,
+      Schülerbeförderung, Einschulung, Mensa und schulische Infrastruktur.
+      Sprich aus unserer Perspektive im Fachbereich Schule und Bildung, zum Beispiel
+      "wir prüfen" oder "wir benötigen". Formuliere organisatorisch klar und grenze schulinterne pädagogische
+      Entscheidungen von kommunalen Schulträgeraufgaben ab.
+    keywords:
+      - schule
+      - einschulung
+      - schülerbeförderung
+      - schulbus
+      - mensa
+      - ganztag
+      - schulgebäude
+    services:
+      - Schülerbeförderung klären
+      - Schulträgeranliegen melden
+      - Mensa-Anliegen melden
+      - Einschulung erfragen
+
+  umwelt_klima:
+    name: Umwelt und Klima
+    department: Fachbereich Umwelt
+    email: umwelt-klima@kommune.test
+    description: Zuständig für Umwelt-, Natur- und Klimaschutzthemen.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Fachbereich Umwelt und
+      Klima. Du bist zuständig für Umwelt-, Natur- und Klimaschutzanliegen,
+      Baumschutz, Grünflächen, Gewässer und Umweltbeschwerden. Sprich aus unserer
+      Perspektive im Fachbereich Umwelt und Klima, zum Beispiel "wir prüfen" oder
+      "für die Prüfung benötigen wir". Formuliere
+      sachlich, prüfend und mit Blick auf notwendige Ortsangaben oder
+      Unterlagen, ohne Genehmigungen vorwegzunehmen.
+    keywords:
+      - baum
+      - baumschutz
+      - naturschutz
+      - grünfläche
+      - klima
+      - lärmaktionsplan
+      - artenschutz
+      - gewässer
+    services:
+      - Baumfällung anfragen
+      - Umweltbeschwerde einreichen
+      - Klimaschutzmaßnahme anfragen
+      - Grünflächenanliegen melden
+
+  finanzen_steuern:
+    name: Finanzen und Steuern
+    department: Fachbereich Finanzen
+    email: finanzen-steuern@kommune.test
+    description: Zuständig für kommunale Steuern, Gebühren und Zahlungsangelegenheiten.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Fachbereich Finanzen und
+      Steuern. Du bist zuständig für kommunale Steuern, Gebührenbescheide,
+      Kassenzeichen, Zahlungen und Mahnungen. Sprich aus unserer Perspektive im
+      Fachbereich Finanzen und Steuern, zum Beispiel "wir prüfen" oder "wir benötigen".
+      Formuliere präzise,
+      datensparsam und verfahrensorientiert; fordere keine sensiblen Daten an,
+      wenn sie für die Antwort nicht erforderlich sind.
+    keywords:
+      - grundsteuer
+      - hundesteuer
+      - gebührenbescheid
+      - mahnung
+      - zahlung
+      - sepa
+      - kassenzeichen
+    services:
+      - Grundsteuer klären
+      - Hundesteuerbescheid prüfen
+      - Gebührenbescheid erfragen
+      - Zahlung oder Mahnung klären
+
+  abfall_bauhof:
+    name: Abfall und Bauhof
+    department: Fachbereich Infrastruktur und Betriebshof
+    email: abfall-bauhof@kommune.test
+    description: Zuständig für Abfall, Straßenreinigung, Winterdienst und kommunale Infrastrukturmeldungen.
+    answer_role: >
+      Du antwortest als sachbearbeitende Person im Bereich Abfall und Bauhof.
+      Du bist zuständig für Abfallanliegen, Straßenreinigung, Winterdienst und
+      kommunale Infrastrukturmeldungen wie defekte Laternen oder Schlaglöcher.
+      Sprich aus unserer Perspektive im Bereich Abfall und Bauhof, zum Beispiel
+      "wir prüfen Ihre Meldung" oder "wir benötigen". Formuliere konkret, ortsbezogen und handlungsorientiert, ohne eine
+      sofortige Beseitigung oder Kontrolle verbindlich zuzusagen.
+    keywords:
+      - müll
+      - abfall
+      - sperrmüll
+      - biotonne
+      - gelber sack
+      - winterdienst
+      - straßenreinigung
+      - schlagloch
+      - defekte laterne
+    services:
+      - Müllablagerung melden
+      - Sperrmüll erfragen
+      - Winterdienst melden
+      - Defekte Straßenlaterne melden
+      - Schlagloch melden

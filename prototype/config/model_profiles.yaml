@@ -1,0 +1,113 @@
+﻿profiles:
+  # Grundprinzip:
+  # - llm_provider/llm_model sind der allgemeine Fallback für LLM-Schritte.
+  # - llm_steps überschreibt einzelne LLM-Schritte gezielt.
+  # - embedding_steps legt die Embedding-Modelle je Embedding-Schritt fest.
+  # - Nicht gesetzte LLM-Schritte fallen automatisch auf die LLM-Basiswerte des Profils zurück.
+  # - Embedding-Schritte haben keinen globalen Profil-Fallback und müssen explizit gesetzt werden.
+  #
+  # Unterstützte LLM-Schritte:
+  # - injection_detection: semantische Prompt-Injection-Prüfung
+  # - classification: Zuordnung zum zuständigen Fachbereich
+  # - answer_generation: Erstellung des Antwortentwurfs
+  # - answer_completeness: Bewertung der Antwortvollständigkeit
+  #
+  # Unterstützte Embedding-Schritte:
+  # - retrieval: Wissensbasis-Index und Anfrage-Retrieval.
+  #   Wichtig: Index-Aufbau und Query müssen dasselbe Embedding-Modell verwenden.
+
+  local_baseline:
+    label: Local Baseline
+    llm_provider: ollama
+    llm_model: llama3.1
+    temperature: 0
+    llm_steps:
+      answer_completeness:
+        provider: openai
+        model: gpt-4o-mini
+        temperature: 0
+    embedding_steps:
+      retrieval:
+        provider: local
+        model: all-MiniLM-L6-v2
+    notes: Lokale Baseline mit bisherigem Llama-Modell und leichtem MiniLM-Embedding.
+
+  local_qwen14b:
+    label: Local Qwen3 14B
+    llm_provider: ollama
+    llm_model: qwen3:14b
+    temperature: 0
+    llm_steps:
+      answer_completeness:
+        provider: openai
+        model: gpt-4o-mini
+        temperature: 0
+    embedding_steps:
+      retrieval:
+        provider: local
+        model: BAAI/bge-m3
+    notes: Stärkere lokale Vergleichsvariante für Antwortgenerierung, Antwortqualität und JSON-Stabilität.
+
+  openai_baseline:
+    label: OpenAI Baseline
+    llm_provider: openai
+    llm_model: gpt-4o-mini
+    temperature: 0
+    embedding_steps:
+      retrieval:
+        provider: openai
+        model: text-embedding-3-small
+    notes: Günstige OpenAI-Baseline für alle LLM-Schritte.
+
+  openai_answer_quality:
+    label: OpenAI Answer Quality
+    llm_provider: openai
+    llm_model: gpt-4o-mini
+    temperature: 0
+    llm_steps:
+      answer_generation:
+        provider: openai
+        model: gpt-5.4-mini
+        temperature: 0
+      answer_completeness:
+        provider: openai
+        model: gpt-4o-mini
+        temperature: 0
+    embedding_steps:
+      retrieval:
+        provider: openai
+        model: text-embedding-3-small
+    notes: Günstiges Modell für Pipeline-Schritte, stärkeres Modell für Antwortgenerierung.
+
+  mixed_step_profile:
+    label: Mixed Step Profile
+    # Basis-Fallbacks: Diese Werte bleiben erforderlich und werden genutzt,
+    # wenn ein LLM-Schritt unten nicht explizit in llm_steps steht.
+    llm_provider: openai
+    llm_model: gpt-4o-mini
+    temperature: 0
+
+    # Schrittmodelle: Hier können Anbieter kombiniert werden,
+    # z. B. Ollama für Klassifikation und OpenAI für Antwortgenerierung.
+    llm_steps:
+      injection_detection:
+        provider: openai
+        model: gpt-4o-mini
+        temperature: 0
+      classification:
+        provider: ollama
+        model: qwen3:14b
+        temperature: 0
+      answer_generation:
+        provider: openai
+        model: gpt-5.4-mini
+        temperature: 0
+      answer_completeness:
+        provider: openai
+        model: gpt-4o-mini
+        temperature: 0
+    embedding_steps:
+      retrieval:
+        provider: openai
+        model: text-embedding-3-small
+    notes: Beispielprofil für frei kombinierbare Anbieter und Modelle je Pipeline-Schritt.
